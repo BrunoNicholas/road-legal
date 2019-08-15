@@ -160,7 +160,6 @@ class UserController extends Controller
         $user->telephone  = $request->telephone;
         $user->occupation  = $request->occupation;
         $user->gender  = $request->gender;
-        $user->address  = $request->address;
         $user->status  = $request->status;
         $user->save();
 
