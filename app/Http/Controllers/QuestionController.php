@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Models\Project;
 use App\Models\Question;
-use App\Models\Department;
+use App\User;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller

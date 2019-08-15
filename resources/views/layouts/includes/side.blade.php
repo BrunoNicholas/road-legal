@@ -79,20 +79,20 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{ route('companies.index') }}">
-								<span class="sidebar-mini"> LO </span>
+								<span class="sidebar-mini"> IC </span>
 								<span class="sidebar-normal"> Insurance Companies </span>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('home') }}">
-								<span class="sidebar-mini"> LT </span>
-								<span class="sidebar-normal"> Land Titles </span>
+							<a class="nav-link" href="javascript:void(0)">
+								<span class="sidebar-mini"> RV </span>
+								<span class="sidebar-normal"> Registered Vehicles </span>
 							</a>
 						</li>
 						<li class="nav-item ">
 							<a class="nav-link" href="javascript:void(0)">
 								<span class="sidebar-mini"> MP </span>
-								<span class="sidebar-normal"> My Participations </span>
+								<span class="sidebar-normal"> My Profiles </span>
 							</a>
 						</li>
 					</ul>
