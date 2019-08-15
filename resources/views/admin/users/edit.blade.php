@@ -59,14 +59,22 @@
 	                </div>
                 </div>
                 <div class="row">
-	                <label class="col-sm-2 col-form-label" for="input-un"> Location </label>
-	                <div class="col-sm-7">
-	                    <div class="form-group">
-	                      	<input class="form-control" input type="text" name="location" id="input-un" placeholder="Location" value="{{ $user->location }}" />
-	                    </div>
-	                </div>
+                  <label class="col-sm-2 col-form-label" for="input-un"> Occupation </label>
+                  <div class="col-sm-7">
+                      <div class="form-group">
+                          <input class="form-control" input type="text" name="occupation" id="input-un" placeholder="Location" value="{{ $user->occupation }}" />
+                      </div>
+                  </div>
                 </div>
-            	<div class="row">
+                <div class="row">
+                  <label class="col-sm-2 col-form-label" for="input-un"> Nationality </label>
+                  <div class="col-sm-7">
+                      <div class="form-group">
+                          <input class="form-control" input type="text" name="nationality" id="input-un" placeholder="Location" value="{{ $user->nationality }}" />
+                      </div>
+                  </div>
+                </div>
+            	  <div class="row">
 	                <label class="col-sm-2 col-form-label"> Role </label>
 	                <div class="col-sm-7">
 	                    <div class="form-group">

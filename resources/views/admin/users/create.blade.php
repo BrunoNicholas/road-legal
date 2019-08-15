@@ -47,10 +47,18 @@
 			                </div>
 		                </div>
 		                <div class="row">
-			                <label class="col-sm-2 col-form-label" for="input-un"> Location </label>
+			                <label class="col-sm-2 col-form-label" for="input-un"> Telephone </label>
 			                <div class="col-sm-7">
 			                    <div class="form-group">
-			                      	<input class="form-control" input type="text" name="location" id="input-un" placeholder="Location" />
+			                      	<input class="form-control" input type="text" name="telephone" id="input-un" placeholder="User telephone number" />
+			                    </div>
+			                </div>
+		                </div>
+		                <div class="row">
+			                <label class="col-sm-2 col-form-label" for="input-un"> Occupation </label>
+			                <div class="col-sm-7">
+			                    <div class="form-group">
+			                      	<input class="form-control" input type="text" name="occupation" id="input-un" placeholder="User occupation" />
 			                    </div>
 			                </div>
 		                </div>

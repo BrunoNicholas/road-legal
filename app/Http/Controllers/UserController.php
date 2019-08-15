@@ -157,9 +157,8 @@ class UserController extends Controller
         $user->name         = $request->name;
         $user->email = $request->email;
         $user->role  = $request->role;
-        $user->country_id  = $request->country_id;
-        $user->username  = $request->username;
         $user->telephone  = $request->telephone;
+        $user->occupation  = $request->occupation;
         $user->gender  = $request->gender;
         $user->address  = $request->address;
         $user->status  = $request->status;
