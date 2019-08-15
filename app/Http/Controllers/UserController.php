@@ -153,7 +153,7 @@ class UserController extends Controller
             'role'      =>  'required',
         ]);
         
-        $user               = Role::find($id);
+        $user               = User::find($id);
         $user->name         = $request->name;
         $user->email = $request->email;
         $user->role  = $request->role;
