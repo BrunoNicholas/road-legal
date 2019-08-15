@@ -62,7 +62,7 @@
 			                <label class="col-sm-2 col-form-label">Email</label>
 			                <div class="col-sm-7">
 			                  	<div class="form-group">
-				                    <input class="form-control" name="email" id="input-email" type="email" placeholder="Email" value="{{ Auth::user()->email }}" required />
+				                    <input class="form-control" name="email" id="input-email" type="email" placeholder="Email" value="{{ Auth::user()->email }}" required disabled />
 				                </div>
 			                </div>
 			            </div>
