@@ -14,7 +14,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::latest()->paginate();
+        return view('system.companies.index', compact(['companies']));
     }
 
     /**
@@ -24,7 +25,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::latest()->paginate();
+        return view('system.companies.create', compact(['companies']));
     }
 
     /**
@@ -44,9 +46,14 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show($id)
     {
-        //
+        $company = Company::find($id);
+        if (!$company) {
+            return back()->with('danger', 'Oups, Company not found!');
+        }
+        $companies = Company::latest()->paginate();
+        return view('system.companies.show', compact(['companies','company']));
     }
 
     /**
@@ -55,9 +62,14 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        //
+        $company = Company::find($id);
+        if (!$company) {
+            return back()->with('danger', 'Oups, Company not found!');
+        }
+        $companies = Company::latest()->paginate();
+        return view('system.companies.edit', compact(['companies','company']));
     }
 
     /**
@@ -67,7 +79,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +90,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy($id)
     {
         //
     }
