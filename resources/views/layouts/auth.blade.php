@@ -66,7 +66,7 @@
   		      <a class="navbar-brand" href="{{ url('/') }}"> {{ config('app.name') }} </a>
   		    </div>
   		    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-  		      	<span class="sr-only">Toggle navigation</span>
+  		      <span class="sr-only">Toggle navigation</span>
   			    <span class="navbar-toggler-icon icon-bar"></span>
   			    <span class="navbar-toggler-icon icon-bar"></span>
   			    <span class="navbar-toggler-icon icon-bar"></span>
@@ -74,7 +74,7 @@
   		    <div class="collapse navbar-collapse justify-content-end">
   		      	<ul class="navbar-nav">
   			        @guest
-  					    {{-- @permission('can_register') --}}
+  					      {{-- @permission('can_register') --}}
   				        <li class="nav-item">
   					        <a href="{{ route('register') }}" class="nav-link">
   					            <i class="material-icons">person_add</i> Register
@@ -86,28 +86,28 @@
   					            <i class="material-icons">fingerprint</i> Login
   					        </a>
   				        </li>
-  				    @else
-  				    	<li class="nav-item">
+  				      @else
+  				    	   <li class="nav-item">
   					        <a href="{{ route('home') }}" class="nav-link">
   					            <i class="material-icons">dashboard</i> Home
   					        </a>
   				        </li>
-  				    @endguest
+  				      @endguest
   		        </ul>
   		    </div>
   		</div>
   	</nav>
-	<div class="wrapper wrapper-full-page">
-    	<div class="page-header login-page header-filter" filter-color="black" style="background-image: url('{{ asset('assets/img/law.jpg') }}'); background-size: cover; background-position: top center;align-items: center;">
-  		<!-- you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-  		<div class="container">
-    		<div class="row">
-    			@yield('content')
+  	<div class="wrapper wrapper-full-page">
+      	<div class="page-header login-page header-filter" filter-color="black" style="background-image: url('{{ asset('assets/img/law.jpg') }}'); background-size: cover; background-attachment: fixed; background-position: top center;align-items: center;">
+    		<!-- you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+    		<div class="container">
+      		<div class="row">
+      			@yield('content')
+      		</div>
+      	</div>
+      	@include('layouts.includes.footer')
     		</div>
-    	</div>
-    	@include('layouts.includes.footer')
-  		</div>
-	</div>
+  	</div>
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>

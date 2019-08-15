@@ -15,7 +15,15 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('car_owner_id')->unsigned()->nullable();
+            $table->integer('company_id')->unsigned()->nullable();
+            $table->double('balance')->default(0.0);
+            $table->double('debt')->default(0.0);
+            $table->string('status')->default('active');
             $table->timestamps();
+
+            $table->foreign('car_owner_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

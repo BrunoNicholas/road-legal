@@ -15,7 +15,16 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('company_name');
+            $table->string('company_email')->nullable();
+            $table->string('company_telephone')->nullable();
+            $table->integer('user_id')->unsigned(); // created_by
+            $table->string('location')->nullable();
+            $table->integer('drivers_number');
+            $table->string('status')->default('');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

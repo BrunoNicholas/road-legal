@@ -95,10 +95,19 @@
 			            </div>
 
 			            <div class="row">
+			                <label class="col-sm-2 col-form-label"> Occupation </label>
+			                <div class="col-sm-7">
+			                  	<div class="form-group">
+				                    <input class="form-control" name="occupation" id="input-occ" type="text" placeholder="Your current occupation" value="{{ Auth::user()->occupation }}" aria-required="true"/>
+				                </div>
+			                </div>
+			            </div>
+
+			            <div class="row">
 			                <label class="col-sm-2 col-form-label"> Location </label>
 			                <div class="col-sm-7">
 			                  	<div class="form-group">
-				                    <input class="form-control" name="location" id="input-location" type="text" placeholder="Your location" value="{{ Auth::user()->location }}" aria-required="true"/>
+				                    <input class="form-control" name="nationality" id="input-nationality" type="text" placeholder="Your nationality" value="{{ Auth::user()->nationality }}" aria-required="true"/>
 				                </div>
 			                </div>
 			            </div>
@@ -186,11 +195,16 @@
 		        </div>
 		        <div class="card-body">
 		            <h6 class="card-category text-gray">{{ App\Models\Role::where('name', Auth::user()->role)->get()->first()->display_name }}</h6>
-		            <h4 class="card-title"> {{ Auth::user()->name }} </h4>
 		            <p class="card-description"> {{ App\Models\Role::where('name', Auth::user()->role)->get()->first()->description }} </p>
+		            <hr>
+		            <h4 class="card-title"> {{ Auth::user()->name }} </h4>
+		            <p class="card-description"> {{ Auth::user()->email }} </p>
+		            <hr>
+		            
+
 		            <p>Created on {{ Auth::user()->created_at }}</p>
 		            <p>Last updated on {{ Auth::user()->updated_at }}</p>
-		            <a href="{{ route('home') }}" class="btn btn-success btn-round"> Home </a>
+		            <a href="{{ route('home') }}" class="btn btn-primary btn-round"> Home </a>
 		        </div>
 	        </div>
       	</div>

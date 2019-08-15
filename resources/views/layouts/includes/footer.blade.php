@@ -3,7 +3,6 @@
 		<nav class="float-left">
 				<ul>
 				<li> <a href="{{ url('/') }}"> {{ config('app.name') }} </a> </li>
-				<li> <a href="javascript:void(0)"> HiiL Hackerthon </a> </li>
 			</ul>
 		</nav>
 		<div class="copyright float-right"> 

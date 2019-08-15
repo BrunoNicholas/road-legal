@@ -4,7 +4,7 @@
 		Tip 2: you can also add an image using data-image tag
 	-->
 	<div class="logo">
-		<a href="{{ route('home') }}" class="simple-text logo-mini"> <b>LU</b> </a>
+		<a href="{{ route('home') }}" class="simple-text logo-mini"> <b>RL</b> </a>
 		<a href="{{ route('home') }}" class="simple-text logo-normal"> {{ config('app.name') }} </a>
 	</div>
 	<div class="sidebar-wrapper">
@@ -78,13 +78,13 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('organisations.index') }}">
+							<a class="nav-link" href="{{ route('companies.index') }}">
 								<span class="sidebar-mini"> LO </span>
-								<span class="sidebar-normal"> Land Organisations </span>
+								<span class="sidebar-normal"> Insurance Companies </span>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('titles.index') }}">
+							<a class="nav-link" href="{{ route('home') }}">
 								<span class="sidebar-mini"> LT </span>
 								<span class="sidebar-normal"> Land Titles </span>
 							</a>
@@ -118,17 +118,12 @@
 								<span class="sidebar-mini"> BD </span> <span class="sidebar-normal"> By District </span>
 							</a>
 						</li>
-						<li class="nav-item ">
-							<a class="nav-link" href="{{ route('departments.index') }}">
-								<span class="sidebar-mini"> MD </span> <span class="sidebar-normal"> Management Departments </span>
-							</a>
-						</li>
 					</ul>
 				</div>
 			</li>
 			<li class="nav-item @if(route('user.home') == Request::fullUrl()) active @endif">
-				<a class="nav-link" href="{{ route('user.home') }}">
-					<i class="material-icons">timeline</i> <p> Data Settings </p>
+				<a class="nav-link" href="{{ route('profile') }}">
+					<i class="material-icons">timeline</i> <p> My Prodile </p>
 				</a>
 			</li>
 			<li class="nav-item">

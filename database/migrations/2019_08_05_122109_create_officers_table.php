@@ -15,7 +15,12 @@ class CreateOfficersTable extends Migration
     {
         Schema::create('officers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->string('police_id')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
