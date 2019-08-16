@@ -19,7 +19,7 @@
     	<div class="card">
     		<div class="card-header card-header-success card-header-icon">
       			<div class="card-icon"> <i class="material-icons">flag</i> </div>
-      			<h4 class="card-title"> List Of Informative Posts | {{ Auth::user()->name }} </h4>
+      			<h4 class="card-title"> List Of Informative Posts | {{ config('app.name') }} </h4>
     		</div>
     		<div class="card-body background-transparent">
     			<div class="row">

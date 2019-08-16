@@ -19,7 +19,7 @@
       	<div class="card">
         		<div class="card-header card-header-success card-header-icon">
           			<div class="card-icon"> <i class="material-icons">location_searching</i> </div>
-          			<h4 class="card-title"> These are the insurance companies registered to the system | {{ Auth::user()->name }} </h4>
+          			<h4 class="card-title"> These are the insurance companies registered to the system | {{ config('app.name') }} </h4>
         		</div>
         		<div class="card-body background-transparent">
           			<div class="row">

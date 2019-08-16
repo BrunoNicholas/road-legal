@@ -4,7 +4,7 @@
 		Tip 2: you can also add an image using data-image tag
 	-->
 	<div class="logo">
-		<a href="{{ route('home') }}" class="simple-text logo-mini"> <b>RL</b> </a>
+		<a href="{{ route('home') }}" class="simple-text logo-mini"> <b>3P</b> </a>
 		<a href="{{ route('home') }}" class="simple-text logo-normal"> {{ config('app.name') }} </a>
 	</div>
 	<div class="sidebar-wrapper">
