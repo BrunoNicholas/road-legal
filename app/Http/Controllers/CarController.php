@@ -94,6 +94,6 @@ class CarController extends Controller
     {
         $item = Car::find($id);
         $item->delete();
-        return redirect()->route('vehicles.index')->with('danger', 'Car detailes deleted successfully!');
+        return redirect()->route('vehicles.index')->with('danger', 'Car details deleted successfully!');
     }
 }

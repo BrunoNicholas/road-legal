@@ -37,11 +37,11 @@
 		</div>
 		<ul class="nav">
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="collapse" href="#laravelExample"  aria-expanded=&quot;true&quot;>
+				<a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded=&quot;true&quot;>
 					<i><img style="width:25px" src="{{ asset('assets/img/favicon.png') }}"></i>
-					<p> System Dashboards <b class="caret"></b></p>
+					<p> START <b class="caret"></b></p>
 				</a>
-				<div class="collapse  show" id="laravelExample">
+				<div class="collapse  @if(route('home') == Request::fullUrl() || route('admin') == Request::fullUrl()) show @endif" id="laravelExample">
 					<ul class="nav">
 						<li class="nav-item @if(route('home') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('home') }}">
@@ -61,27 +61,39 @@
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="collapse" href="#pagesExamples" >
+				<a class="nav-link" data-toggle="collapse" href="#pagesExamples" aria-expanded=&quot;true&quot;>
 					<i class="material-icons">image</i> <p> System <b class="caret"></b> </p>
 				</a>
-				<div class="collapse" id="pagesExamples">
+				<div class="collapse @if(route('companies.index') == Request::fullUrl() || route('owners.index') == Request::fullUrl() || route('vehicles.index') == Request::fullUrl() || route('posts.index') == Request::fullUrl() || route('questions.index') == Request::fullUrl() || route('accounts.index') == Request::fullUrl() || route('officers.index') == Request::fullUrl() || route('profile') == Request::fullUrl()) show @endif" id="pagesExamples">
 					<ul class="nav">
-						<li class="nav-item">
+						<li class="nav-item @if(route('companies.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('companies.index') }}">
 								<span class="sidebar-mini"> IC </span>
 								<span class="sidebar-normal"> Insurance Companies </span>
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item @if(route('owners.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('owners.index') }}">
 								<span class="sidebar-mini"> VO </span>
-								<span class="sidebar-normal"> Vehicle Ownes </span>
+								<span class="sidebar-normal"> Vehicle Owners </span>
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item @if(route('vehicles.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('vehicles.index') }}">
 								<span class="sidebar-mini"> RV </span>
 								<span class="sidebar-normal"> Registered Vehicles </span>
+							</a>
+						</li>
+						<li class="nav-item @if(route('accounts.index') == Request::fullUrl()) active @endif">
+							<a class="nav-link" href="{{ route('accounts.index') }}">
+								<span class="sidebar-mini"> UA </span>
+								<span class="sidebar-normal"> User Accounts </span>
+							</a>
+						</li>
+						<li class="nav-item @if(route('officers.index') == Request::fullUrl()) active @endif">
+							<a class="nav-link" href="{{ route('officers.index') }}">
+								<span class="sidebar-mini"> PO </span>
+								<span class="sidebar-normal"> Police Officers </span>
 							</a>
 						</li>
 						<li class="nav-item @if(route('posts.index') == Request::fullUrl()) active @endif">
@@ -89,18 +101,13 @@
 								<span class="sidebar-mini"> IP </span> <span class="sidebar-normal"> Informative Posts </span>
 							</a>
 						</li>
-						<li class="nav-item @if(route('posts.index') == Request::fullUrl()) active @endif">
-							<a class="nav-link" href="{{ route('posts.index') }}">
-								<span class="sidebar-mini"> IP </span> <span class="sidebar-normal"> Informative Questions </span>
-							</a>
-						</li>
-						<li class="nav-item">
+						<li class="nav-item @if(route('questions.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('questions.index') }}">
 								<span class="sidebar-mini"> AQ </span>
 								<span class="sidebar-normal"> Asked Questions </span>
 							</a>
 						</li>
-						<li class="nav-item ">
+						<li class="nav-item @if(route('profile') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('profile') }}">
 								<span class="sidebar-mini"> MP </span>
 								<span class="sidebar-normal"> My Profiles </span>
@@ -110,9 +117,9 @@
 				</div>
 			</li>
 			<!-- I know all things! -->
-			<li class="nav-item @if(route('user.home') == Request::fullUrl()) active @endif">
+			<li class="nav-item @if(route('profile') == Request::fullUrl()) active @endif">
 				<a class="nav-link" href="{{ route('profile') }}">
-					<i class="material-icons">timeline</i> <p> My Prodile </p>
+					<i class="material-icons">timeline</i> <p> My Profile </p>
 				</a>
 			</li>
 			<li class="nav-item">

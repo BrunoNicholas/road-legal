@@ -14,7 +14,8 @@ class CarOwnerController extends Controller
      */
     public function index()
     {
-        //
+        $owners = CarOwner::latest()->paginate();
+        return view('system.owners.index',compact(['owners']));
     }
 
     /**
@@ -24,7 +25,8 @@ class CarOwnerController extends Controller
      */
     public function create()
     {
-        //
+        $owners = CarOwner::latest()->paginate();
+        return view('system.owners.create',compact(['owners']));
     }
 
     /**
@@ -44,9 +46,14 @@ class CarOwnerController extends Controller
      * @param  \App\Models\CarOwner  $carOwner
      * @return \Illuminate\Http\Response
      */
-    public function show(CarOwner $carOwner)
+    public function show($id)
     {
-        //
+        $owners = CarOwner::latest()->paginate();
+        $owner = CarOwner::find($id);
+        if (!$owner) {
+            return back()->with('danger','Sorry, the car owner does not exist');
+        }
+        return view('system.owners.show',compact(['owner','owners']));
     }
 
     /**
@@ -55,9 +62,14 @@ class CarOwnerController extends Controller
      * @param  \App\Models\CarOwner  $carOwner
      * @return \Illuminate\Http\Response
      */
-    public function edit(CarOwner $carOwner)
+    public function edit($id)
     {
-        //
+        $owners = CarOwner::latest()->paginate();
+        $owner = CarOwner::find($id);
+        if (!$owner) {
+            return back()->with('danger','Sorry, the car owner does not exist');
+        }
+        return view('system.owners.edit',compact(['owner','owners']));
     }
 
     /**
@@ -67,7 +79,7 @@ class CarOwnerController extends Controller
      * @param  \App\Models\CarOwner  $carOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CarOwner $carOwner)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,8 +90,10 @@ class CarOwnerController extends Controller
      * @param  \App\Models\CarOwner  $carOwner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CarOwner $carOwner)
+    public function destroy($id)
     {
-        //
+        $item = CarOwner::find($id);
+        $item->delete();
+        return redirect()->route('vehicles.index')->with('danger', 'Profile deleted successfully!');
     }
 }
