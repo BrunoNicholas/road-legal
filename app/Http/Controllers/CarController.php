@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Company;
+use App\Models\CarOwner;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -26,7 +28,9 @@ class CarController extends Controller
     public function create()
     {
         $vehicles = Car::latest()->paginate();
-        return view('system.vehicles.create',compact(['vehicles']));
+        $companies = Company::all();
+        $owners = CarOwner::all();
+        return view('system.vehicles.create',compact(['vehicles','owners','companies']));
     }
 
     /**
@@ -37,7 +41,13 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'reg_no'    =>  'required',
+            'no_plate' => 'required|unique:cars'
+        ]);
+        Car::create($request->all());
+
+        return redirect()->route('vehicles.index')->with('success','MTP car/vehicle added successfully!');
     }
 
     /**
@@ -53,7 +63,7 @@ class CarController extends Controller
         if (!$vehicle) {
             return redirect()->route('vehicles.index')->with('danger', 'The specified vehicle does not exist!');
         }
-        return view('system.vehicles.show',compact(['vehicles']));
+        return view('system.vehicles.show',compact(['vehicles','vehicle']));
     }
 
     /**
@@ -66,10 +76,12 @@ class CarController extends Controller
     {
         $vehicles = Car::all();
         $vehicle = Car::find($id);
+        $companies = Company::all();
+        $owners = CarOwner::all();
         if (!$vehicle) {
             return redirect()->route('vehicles.index')->with('danger', 'The specified vehicle does not exist!');
         }
-        return view('system.vehicles.edit',compact(['vehicles']));
+        return view('system.vehicles.edit',compact(['vehicles','companies','vehicle','owners']));
     }
 
     /**
@@ -81,7 +93,13 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'reg_no'    =>  'required',
+            'no_plate' => 'required'
+        ]);
+
+        Car::find($id)->update($request->all());
+        return redirect()->route('vehicles.index')->with('success','MTP record updated successfully!');
     }
 
     /**

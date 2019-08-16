@@ -16,11 +16,9 @@ class CreateCarOwnersTable extends Migration
         Schema::create('car_owners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('owner_name');
-            $table->string('owner_email');
-            $table->string('owner_telephone');
+            $table->string('owner_email')->nullable();
+            $table->string('owner_telephone')->nullable();
             $table->integer('user_id')->unsigned(); // created_by
-            $table->date('purchase_date');
-            $table->date('expiry_date');
             $table->string('status');
             $table->timestamps();
 

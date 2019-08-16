@@ -18,8 +18,6 @@ class CarOwner extends Model
         'owner_email',
         'owner_telephone',
         'user_id',
-        'purchase_date',
-        'expiry_date',
         'status'
     ];
 

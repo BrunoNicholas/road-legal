@@ -54,23 +54,7 @@
                           </div>
                       </div>
                     </div>
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> 
-                    <div class="row">
-                        <label class="col-sm-2 col-form-label" for="input-un"> Previous car purchase date </label>
-                        <div class="col-sm-7">
-                            <div class="form-group">
-                                <input class="form-control" input type="date" name="purchase_date" value="{{ $owner->purchase_date }}" id="input-un" placeholder="Purchase date" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-2 col-form-label" for="input-un"> Previous car expiry date </label>
-                        <div class="col-sm-7">
-                            <div class="form-group">
-                                <input class="form-control" input type="date" value="{{ $owner->expiry_date }}" name="expiry_date" id="input-un" placeholder="Drivers number" />
-                            </div>
-                        </div>
-                    </div>
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <div class="row">
                         <label class="col-sm-2 col-form-label" for="input-st"> Status </label>
                         <div class="col-sm-7">

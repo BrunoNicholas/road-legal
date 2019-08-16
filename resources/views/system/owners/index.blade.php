@@ -11,7 +11,7 @@
         {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
         <li class="breadcrumb-item active" aria-current="page"> Owners &amp; Drivers </li>
     </ol>
-    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('owners.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
+    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} @role(['super-admin','admin']) - <a href="{{ route('owners.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
 </div>
 @include('layouts.includes.notifications')
 <div class="row">

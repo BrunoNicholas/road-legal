@@ -20,7 +20,15 @@ class Car extends Model
         'company_id',
         'car_category',
         'car_price',
-        'price_units'
+        'price_units',
+        'reg_no',
+        'policy_no',
+        'seating_capacity',
+        'gross_weight',
+        'premium_charged',
+        'date_of_issue',
+        'date_of_expiry',
+        'issuing_authority'
     ];
 
     /**
