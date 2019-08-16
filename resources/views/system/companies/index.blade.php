@@ -23,9 +23,40 @@
         		</div>
         		<div class="card-body background-transparent">
           			<div class="row">
-
-
-
+                    <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                              <tr>
+                                  <th class="text-center">#</th>
+                                  <th>Company Name</th>
+                                  <th>Company Email</th>
+                                  <th>Telephone</th>
+                                  <th class="text-right">Status</th>
+                                  <th class="text-right">Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php $i=0; ?>
+                              @foreach($companies as $company)
+                                  <tr>
+                                      <td>{{ ++$i }}</td>
+                                      <td>{{ $company->company_name }}</td>
+                                      <td>{{ $company->company_email }}</td>
+                                      <td>{{ $company->company_telephone }}</td>
+                                      <td>{{ $company->status }}</td>
+                                      <td class="td-actions text-center">
+                                          <a href="{{ route('companies.show', $company->id) }}" rel="tooltip" class="btn btn-info btn-round" style="margin: 2px;" title="View user details">
+                                              <i class="material-icons">done</i>
+                                          </a>
+                                          <a href="{{ route('companies.edit', $company->id) }}" rel="tooltip" class="btn btn-success btn-round" style="margin: 2px;" title="Edit user details">
+                                              <i class="material-icons">edit</i>
+                                          </a>
+                                      </td>
+                                  </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
+                  </div>
           			</div>
         		</div>
       	</div>
