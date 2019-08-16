@@ -37,7 +37,15 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'company_name'                =>  'required',
+            'user_id' =>  'required',
+            'drivers_number' => 'required',
+            'status'          =>  'required'
+        ]);
+        Company::create($request->all());
+
+        return redirect()->route('companies.index')->with('success','Insurance company added successfully');
     }
 
     /**

@@ -20,8 +20,8 @@ class CreateCompaniesTable extends Migration
             $table->string('company_telephone')->nullable();
             $table->integer('user_id')->unsigned(); // created_by
             $table->string('location')->nullable();
-            $table->integer('drivers_number');
-            $table->string('status')->default('');
+            $table->integer('drivers_number')->default(0);
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -9,6 +9,14 @@
         <div class="col-md-12">
 		    <form method="post" enctype="multipart/form-data" action="{{ route('users.store') }}" autocomplete="off" class="form-horizontal">
 		        @csrf
+		        @foreach ($errors->all() as $error)
+                    <p class="alert alert-danger">{{ $error }}</p>
+                @endforeach
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
 		        <input type="hidden" name="_method" value="post">
 	            <div class="card ">
 		            <div class="card-header card-header-rose card-header-icon">
