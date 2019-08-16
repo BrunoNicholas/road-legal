@@ -4,6 +4,16 @@
 @section('styles')  @endsection
 @section('page_name') Informative Posts | {{ config('app.name') }} @endsection
 @section('content')
+<div class="block-header">
+    <ol class="breadcrumb pull-right">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('companies.index') }}"> Insurance Companies </a></li>
+        {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
+        <li class="breadcrumb-item active" aria-current="page"> Posts </li>
+    </ol>
+    <span class="breadcrumb">Sensitisation Posts - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('posts.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
+</div>
+@include('layouts.includes.notifications')
 <div class="row">
   	<div class="col-md-12">
     	<div class="card">

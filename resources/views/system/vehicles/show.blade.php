@@ -4,6 +4,8 @@
 @section('styles')  @endsection
 @section('page_name') View Vehicle Details | {{ config('app.name') }} @endsection
 @section('content')
+
+@include('layouts.includes.notifications')
 <div class="row">
   	<div class="col-md-12">
     	<div class="card">
