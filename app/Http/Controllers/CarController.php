@@ -14,7 +14,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = Car::latest()->paginate();
+        return view('system.vehicles.index',compact(['vehicles']));
     }
 
     /**
@@ -24,7 +25,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $vehicles = Car::latest()->paginate();
+        return view('system.vehicles.create',compact(['vehicles']));
     }
 
     /**
@@ -44,9 +46,14 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(Car $car)
+    public function show($id)
     {
-        //
+        $vehicles = Car::all();
+        $vehicle = Car::find($id);
+        if (!$vehicle) {
+            return redirect()->route('vehicles.index')->with('danger', 'The specified vehicle does not exist!');
+        }
+        return view('system.vehicles.show',compact(['vehicles']));
     }
 
     /**
@@ -55,9 +62,14 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit($id)
     {
-        //
+        $vehicles = Car::all();
+        $vehicle = Car::find($id);
+        if (!$vehicle) {
+            return redirect()->route('vehicles.index')->with('danger', 'The specified vehicle does not exist!');
+        }
+        return view('system.vehicles.edit',compact(['vehicles']));
     }
 
     /**
@@ -67,7 +79,7 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,8 +90,10 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
-        //
+        $item = Car::find($id);
+        $item->delete();
+        return redirect()->route('vehicles.index')->with('danger', 'Car detailes deleted successfully!');
     }
 }

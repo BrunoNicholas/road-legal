@@ -66,9 +66,32 @@
 				</a>
 				<div class="collapse" id="pagesExamples">
 					<ul class="nav">
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('companies.index') }}">
+								<span class="sidebar-mini"> IC </span>
+								<span class="sidebar-normal"> Insurance Companies </span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('owners.index') }}">
+								<span class="sidebar-mini"> VO </span>
+								<span class="sidebar-normal"> Vehicle Ownes </span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('vehicles.index') }}">
+								<span class="sidebar-mini"> RV </span>
+								<span class="sidebar-normal"> Registered Vehicles </span>
+							</a>
+						</li>
 						<li class="nav-item @if(route('posts.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('posts.index') }}">
 								<span class="sidebar-mini"> IP </span> <span class="sidebar-normal"> Informative Posts </span>
+							</a>
+						</li>
+						<li class="nav-item @if(route('posts.index') == Request::fullUrl()) active @endif">
+							<a class="nav-link" href="{{ route('posts.index') }}">
+								<span class="sidebar-mini"> IP </span> <span class="sidebar-normal"> Informative Questions </span>
 							</a>
 						</li>
 						<li class="nav-item">
@@ -77,20 +100,8 @@
 								<span class="sidebar-normal"> Asked Questions </span>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ route('companies.index') }}">
-								<span class="sidebar-mini"> IC </span>
-								<span class="sidebar-normal"> Insurance Companies </span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="javascript:void(0)">
-								<span class="sidebar-mini"> RV </span>
-								<span class="sidebar-normal"> Registered Vehicles </span>
-							</a>
-						</li>
 						<li class="nav-item ">
-							<a class="nav-link" href="javascript:void(0)">
+							<a class="nav-link" href="{{ route('profile') }}">
 								<span class="sidebar-mini"> MP </span>
 								<span class="sidebar-normal"> My Profiles </span>
 							</a>
@@ -99,28 +110,6 @@
 				</div>
 			</li>
 			<!-- I know all things! -->
-			<li class="nav-item ">
-				<a class="nav-link" data-toggle="collapse" href="#mapsExamples" >
-				<i class="material-icons">place</i>
-				<p> Maps
-				<b class="caret"></b>
-				</p>
-				</a>
-				<div class="collapse " id="mapsExamples">
-					<ul class="nav">
-						<li class="nav-item  @if(route('home') == Request::fullUrl()) active @endif">
-							<a class="nav-link" href="{{ route('home') }}">
-								<span class="sidebar-mini"> FM </span> <span class="sidebar-normal"> Full Map </span>
-							</a>
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link" href="javascript:void(0)" onclick="return alert('Feature still under developement!\nSorry for the incinvenience')">
-								<span class="sidebar-mini"> BD </span> <span class="sidebar-normal"> By District </span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</li>
 			<li class="nav-item @if(route('user.home') == Request::fullUrl()) active @endif">
 				<a class="nav-link" href="{{ route('profile') }}">
 					<i class="material-icons">timeline</i> <p> My Prodile </p>

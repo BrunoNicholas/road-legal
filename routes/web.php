@@ -64,7 +64,9 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function
 	Route::resource('company/posts', 'PostController');
 	Route::resource('/companies', 'CompanyController');
 	Route::resource('/company/questions', 'QuestionController');
-
+	Route::resource('/cars/owners', 'CarOwnerController');
+	Route::resource('/cars/vehicles', 'CarController');
+	Route::resource('/cars/owners', 'CarOwnerController');
 
 
 	Route::get('/user/profile/settings', [
