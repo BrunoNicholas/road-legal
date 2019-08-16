@@ -77,7 +77,8 @@
                           </div>
                       </div>
                     </div>
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">                                <div class="row">
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">                                
+                    <div class="row">
                       <label class="col-sm-2 col-form-label" for="input-st"> Status </label>
                       <div class="col-sm-7">
                           <div class="form-control">
