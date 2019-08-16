@@ -115,6 +115,6 @@ class CarOwnerController extends Controller
     {
         $item = CarOwner::find($id);
         $item->delete();
-        return redirect()->route('vehicles.index')->with('danger', 'Profile deleted successfully!');
+        return redirect()->route('owners.index')->with('danger', 'Profile deleted successfully!');
     }
 }
