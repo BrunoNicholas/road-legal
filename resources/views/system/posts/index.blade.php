@@ -23,9 +23,28 @@
     		</div>
     		<div class="card-body background-transparent">
     			<div class="row">
+                    <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>Company Name</th>
+                                        <th>Company Email</th>
+                                        <th>Telephone</th>
+                                        <th class="text-right">Status</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i=0; ?>
+                                    @foreach($posts as $post)
 
 
 
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
     			</div>
     		</div>
     	</div>

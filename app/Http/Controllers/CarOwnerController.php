@@ -37,7 +37,18 @@ class CarOwnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'owner_name'    =>  'required',
+            'owner_email' => 'required',
+            'owner_telephone' => 'required',
+            'user_id' =>  'required',
+            'purchase_date' => 'required',
+            'expiry_date' => 'required',
+            'status'          =>  'required'
+        ]);
+        CarOwner::create($request->all());
+
+        return redirect()->route('owners.index')->with('success','Car owner added successfully!');
     }
 
     /**

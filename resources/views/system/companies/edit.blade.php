@@ -63,7 +63,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <label class="col-sm-2 col-form-label" for="input-un"> Number of drovers </label>
+                      <label class="col-sm-2 col-form-label" for="input-un"> Number of drivers </label>
                       <div class="col-sm-7">
                           <div class="form-group">
                               <input class="form-control" input type="number" value="{{ $company->number }}" name="drivers_number" id="input-un" placeholder="Drivers number" />

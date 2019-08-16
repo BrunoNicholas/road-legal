@@ -74,14 +74,14 @@
 						</li>
 						<li class="nav-item @if(route('owners.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('owners.index') }}">
-								<span class="sidebar-mini"> VO </span>
-								<span class="sidebar-normal"> Vehicle Owners </span>
+								<span class="sidebar-mini"> RD </span>
+								<span class="sidebar-normal"> Registered Drivers </span>
 							</a>
 						</li>
 						<li class="nav-item @if(route('vehicles.index') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('vehicles.index') }}">
-								<span class="sidebar-mini"> RV </span>
-								<span class="sidebar-normal"> Registered Vehicles </span>
+								<span class="sidebar-mini"> M </span>
+								<span class="sidebar-normal"> MTP </span>
 							</a>
 						</li>
 						<li class="nav-item @if(route('accounts.index') == Request::fullUrl()) active @endif">

@@ -16,7 +16,7 @@
     	<div class="card">
     		<div class="card-header card-header-success card-header-icon">
       			<div class="card-icon"> <i class="material-icons">home</i> </div>
-      			<h4 class="card-title"> {{ Auth::user()->name }} | {{ App\Models\Role::where('name',Auth::user()->role)->first()->display_name }} <small> - List of available land sold all over the country!</small> </h4>
+      			<h4 class="card-title"> {{ Auth::user()->name }} | {{ App\Models\Role::where('name',Auth::user()->role)->first()->display_name }} <small> - List of insurance companies registered!</small> </h4>
     		</div>
     		<div class="card-body background-transparent" style="padding: 0px;">
     			<div class="row">
@@ -25,27 +25,12 @@
     				</div>
     				<div class="col-md-4">
     					<div class="row">
-                            <div class="col-md-12">
-                                <p>Land sold: Kampala, Uganda (GPS - [0.347596, 32.582520])</p>
+                            <div class="card">
+
+
+                                
+                                
                             </div>
-                            <div class="col-md-12">
-                                <p>Land sold: Soroti, Uganda (GPS - [1.628504, 32.239380])</p>
-                            </div>
-                            <div class="col-md-12">
-                                <p>Land sold: Kabeeramaido, Uganda (GPS - [1.573594, 33.530273])</p>
-                            </div>
-                            <div class="col-md-12">
-                                <p>Land sold: Mbarara, Uganda (GPS - [0.140076, 31.008911])</p>
-                            </div>
-    						<div class="col-md-12">
-    							
-    						</div>
-    						<div class="col-md-12">
-    							
-    						</div>
-    						<div class="col-md-12">
-    							
-    						</div>
     					</div>
     				</div>
     			</div>

@@ -11,7 +11,7 @@
         {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
         <li class="breadcrumb-item active" aria-current="page"> Vehicles </li>
     </ol>
-    <span class="breadcrumb">Company &amp; Individual Vehicles - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('vehicles.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
+    <span class="breadcrumb">Company &amp; Individual Vehicles - {{ config('app.name') }} @role(['super-admin','admin']) <a href="{{ route('vehicles.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
 </div>
 @include('layouts.includes.notifications')
 <div class="row">
@@ -23,8 +23,28 @@
         		</div>
         		<div class="card-body background-transparent">
           			<div class="row">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>Company Name</th>
+                                        <th>Company Email</th>
+                                        <th>Telephone</th>
+                                        <th class="text-right">Status</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i=0; ?>
+                                    @foreach($vehicles as $vehicle)
 
 
+
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
           			</div>
         		</div>
