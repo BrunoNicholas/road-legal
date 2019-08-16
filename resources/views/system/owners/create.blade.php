@@ -29,7 +29,7 @@
             <div class="card ">
                 <div class="card-header card-header-rose card-header-icon">
                     <div class="card-icon"> <i class="material-icons">person</i> </div>
-                    <h4 class="card-title">Add New Insurance Company</h4>
+                    <h4 class="card-title">Add New Owner/Driver </h4>
                 </div>
                 <div class="card-body ">
                     <div class="row">

@@ -39,8 +39,8 @@ class CarOwnerController extends Controller
     {
         request()->validate([
             'owner_name'    =>  'required',
-            'owner_email' => 'required',
-            'owner_telephone' => 'required',
+            'owner_email' => 'required|unique:car_owners',
+            'owner_telephone' => 'required|unique:car_owners',
             'user_id' =>  'required',
             'purchase_date' => 'required',
             'expiry_date' => 'required',
@@ -92,7 +92,17 @@ class CarOwnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'owner_name'    =>  'required',
+            'owner_email' => 'required',
+            'owner_telephone' => 'required',
+            'user_id' =>  'required',
+            'purchase_date' => 'required',
+            'expiry_date' => 'required',
+            'status'          =>  'required'
+        ]);
+        CarOwner::find($id)->update($request->all());
+        return redirect()->route('owners.index')->with('success','Driver or owner updated successfully!');
     }
 
     /**

@@ -38,10 +38,10 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'company_name'                =>  'required',
-            'user_id' =>  'required',
-            'drivers_number' => 'required',
-            'status'          =>  'required'
+            'company_name'      =>  'required|unique:companies',
+            'user_id'           =>  'required',
+            'drivers_number'    => 'required',
+            'status'            =>  'required'
         ]);
         Company::create($request->all());
 
@@ -89,7 +89,15 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'company_name'      =>  'required',
+            'user_id'           =>  'required',
+            'drivers_number'    => 'required',
+            'status'            =>  'required'
+        ]);
+        Company::find($id)->update($request->all());
+
+        return redirect()->route('companies.index')->with('success','Company updated successfully!');
     }
 
     /**
