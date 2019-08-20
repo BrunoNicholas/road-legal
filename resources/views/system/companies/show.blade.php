@@ -81,14 +81,6 @@
                                 <td></td>
                             </tr>
                         @endif
-                        @if($company->drivers_number)
-                            <tr>
-                                <th scope="row">{{ ++$i }}</th>
-                                <td>Number of known drivers</td>
-                                <td>{{ $company->drivers_number }}</td>
-                                <td></td>
-                            </tr>
-                        @endif
                         @if($company->status)
                             <tr>
                                 <th scope="row">{{ ++$i }}</th>

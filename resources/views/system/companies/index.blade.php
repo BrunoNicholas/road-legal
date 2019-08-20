@@ -24,7 +24,7 @@
         		<div class="card-body background-transparent">
           			<div class="row">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="datatables" class="table table-striped table-no-bordered table-hover">
                           <thead>
                               <tr>
                                   <th class="text-center">#</th>
@@ -62,4 +62,26 @@
       	</div>
     </div>
 </div>
+@endsection
+@section('scripts')
+  <script>
+    $(document).ready(function() {
+        $('#datatables').fadeIn(1100);
+        $('#datatables').DataTable({
+          "pagingType": "full_numbers",
+          "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+          ],
+          responsive: true,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search users",
+          },
+          "columnDefs": [
+            { "orderable": false, "targets": 5 },
+          ],
+        });
+      });
+  </script>
 @endsection

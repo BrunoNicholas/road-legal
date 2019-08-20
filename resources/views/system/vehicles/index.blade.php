@@ -20,53 +20,75 @@
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon"> <i class="material-icons">location_searching</i> </div>
                 <h4 class="card-title"> The vehicles that have registred successfully | {{ config('app.name') }} </h4>
-        		</div>
-        		<div class="card-body background-transparent">
-          			<div class="row">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+    		</div>
+    		<div class="card-body background-transparent">
+      			<div class="row">
+                    <div class="table-responsive">
+                        <table class="table" id="datatables" class="table table-striped table-no-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Policy Holder</th>
+                                    <th>Policy Number</th>
+                                    <th>Car No. Plate</th>
+                                    <th>Model/Make</th>
+                                    <th>Seating Capacity</th>
+                                    <th>Expiry Date</th>
+                                    <th class="text-right">Premium Charged</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=0; ?>
+                                @foreach($vehicles as $vehicle)
                                     <tr>
-                                        <th class="text-center">#</th>
-                                        <th>Policy Holder</th>
-                                        <th>Policy Number</th>
-                                        <th>Car No. Plate</th>
-                                        <th>Model/Make</th>
-                                        <th>Seating Capacity</th>
-                                        <th>Expiry Date</th>
-                                        <th class="text-right">Premium Charged</th>
-                                        <th class="text-right">Actions</th>
+                                        <td>{{ ++$i }}</td>
+                                        <td><a href="{{ route('owners.show',$vehicle->car_owner_id) }}" title="View Policy Holder's details">{{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</a></td>
+                                        <td>{{ $vehicle->policy_no }}</td>
+                                        <td>{{ $vehicle->no_plate }}</td>
+                                        <td>{{ $vehicle->car_model }}</td>
+                                        <td>{{ $vehicle->seating_capacity }}</td>
+                                        <td>{{ $vehicle->date_of_expiry }}</td>
+                                        <td>{{ $vehicle->premium_charged }}</td>
+                                        <td class="td-actions text-center">
+                                            <a href="{{ route('vehicles.show', $vehicle->id) }}" rel="tooltip" class="btn btn-info btn-round" style="margin: 2px;" title="View MTP vehicle details">
+                                                <i class="material-icons">done</i>
+                                            </a>
+                                            <a href="{{ route('vehicles.edit', $vehicle->id) }}" rel="tooltip" class="btn btn-success btn-round" style="margin: 2px;" title="Edit MTP vehicle details">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i=0; ?>
-                                    @foreach($vehicles as $vehicle)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <td><a href="{{ route('owners.show',$vehicle->car_owner_id) }}" title="View Policy Holder's details">{{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</a></td>
-                                            <td>{{ $vehicle->policy_no }}</td>
-                                            <td>{{ $vehicle->no_plate }}</td>
-                                            <td>{{ $vehicle->car_model }}</td>
-                                            <td>{{ $vehicle->seating_capacity }}</td>
-                                            <td>{{ $vehicle->date_of_expiry }}</td>
-                                            <td>{{ $vehicle->premium_charged }}</td>
-                                            <td class="td-actions text-center">
-                                                <a href="{{ route('vehicles.show', $vehicle->id) }}" rel="tooltip" class="btn btn-info btn-round" style="margin: 2px;" title="View MTP vehicle details">
-                                                    <i class="material-icons">done</i>
-                                                </a>
-                                                <a href="{{ route('vehicles.edit', $vehicle->id) }}" rel="tooltip" class="btn btn-success btn-round" style="margin: 2px;" title="Edit MTP vehicle details">
-                                                    <i class="material-icons">edit</i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
-          			</div>
-        		</div>
+      			</div>
+    		</div>
       	</div>
     </div>
 </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+          $('#datatables').fadeIn(1100);
+          $('#datatables').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+              [10, 25, 50, -1],
+              [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+              search: "_INPUT_",
+              searchPlaceholder: "Search users",
+            },
+            "columnDefs": [
+              { "orderable": false, "targets": 5 },
+            ],
+          });
+        });
+    </script>
 @endsection
