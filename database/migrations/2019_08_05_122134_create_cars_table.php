@@ -30,6 +30,7 @@ class CreateCarsTable extends Migration
             $table->date('date_of_issue')->nullable();
             $table->date('date_of_expiry')->nullable();
             $table->string('issuing_authority')->nullable();
+            $table->string('status')->default('pending')->nullable();
             
             $table->timestamps();
 

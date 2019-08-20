@@ -156,6 +156,14 @@
                                   <td></td>
                               </tr>
                           @endif
+                          @if($vehicle->status)
+                              <tr>
+                                  <th scope="row">{{ ++$i }}</th>
+                                  <td>System MTP Status</td>
+                                  <td>{{ $vehicle->status }}</td>
+                                  <td></td>
+                              </tr>
+                          @endif
                       </tbody>
                   </table>
           			</div>

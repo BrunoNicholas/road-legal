@@ -5,7 +5,6 @@
 @section('page_name') System Users @endsection
 @section('content')
 	@include('layouts.includes.notifications')
-	
 	<div class="row">
         <div class="col-md-12">
             <div class="card">

@@ -28,7 +28,9 @@ class Car extends Model
         'premium_charged',
         'date_of_issue',
         'date_of_expiry',
+        'status',
         'issuing_authority'
+
     ];
 
     /**

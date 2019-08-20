@@ -108,6 +108,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Company::find($id);
+        $item->delete();
+        return redirect()->route('companies.index')->with('danger', 'Insurance company deleted successfully!');
     }
 }

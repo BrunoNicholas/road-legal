@@ -1,8 +1,8 @@
 @extends('layouts.site')
-@section('title') Drivers @endsection
+@section('title') Accounts @endsection
 
 @section('styles')  @endsection
-@section('page_name') Drivers &amp; Owners | {{ config('app.name') }} @endsection
+@section('page_name') User Accounts| {{ config('app.name') }} @endsection
 @section('content')
 <div class="block-header">
     <ol class="breadcrumb pull-right">
@@ -11,7 +11,7 @@
         <li class="breadcrumb-item"><a href="{{ route('owners.index') }}"> Owners &amp; Drivers</a></li> 
         <li class="breadcrumb-item active" aria-current="page"> Accounts </li>
     </ol>
-    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('accounts.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
+    <span class="breadcrumb">MTP User Accounts - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('accounts.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
 </div>
 @include('layouts.includes.notifications')
 <div class="row">
@@ -20,36 +20,48 @@
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon"> <i class="material-icons">location_searching</i> </div>
                 <h4 class="card-title"> Find all accounts as per policy holder | {{ config('app.name') }} </h4>
-        		</div>
-        		<div class="card-body background-transparent">
-          			<div class="row">
-                        <div class="table-responsive">
-                            <table class="table" id="datatables" class="table table-striped table-no-bordered table-hover">
-                                <thead>
+    		</div>
+    		<div class="card-body background-transparent">
+      			<div class="row">
+                    <div class="table-responsive">
+                        <table class="table" id="datatables" class="table table-striped table-no-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th class="text-center">#</th>
+                                    <th>MTP (Vehicle)</th>
+                                    <th>Balance</th>
+                                    <th>Debt</th>
+                                    <th>Policy Holder</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=0; ?>
+                                @foreach($accounts as $account)
                                     <tr>
-                                        <th class="text-center">#</th>
-                                        <th>Policy Holder</th>
-                                        <th>Company Associate</th>
-                                        <th>Balance</th>
-                                        <th>Pending Debt</th>
-                                        <th class="text-right">Status</th>
-                                        <th class="text-right">Actions</th>
+                                        <td>{{ ++$i }}</td>
+                                        <td>{{ App\Models\Car::where('id',$account->car_id)->first()->no_plate . ' - ' . App\Models\Car::where('id',$account->car_id)->first()->car_model }}</td>  
+                                        <td class="text-center">{{ $account->balance }}</td>  
+                                        <td class="text-center">{{ $account->debt }}</td>  
+                                        <td class="text-center">{{ $account->car_owner_id ? App\Models\CarOwner::where('id',$account->car_owner_id)->first()->owner_name : '' }}</td>
+                                        <td class="text-center">{{ $account->status }}</td>
+
+                                        <td class="td-actions text-center">
+                                            <a href="{{ route('accounts.show', $account->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View account details">
+                                                  <i class="material-icons">done</i> View
+                                            </a>
+                                            <a href="{{ route('accounts.edit', $account->id) }}" rel="tooltip" class="btn btn-success btn-round btn-sm" style="margin: 2px;" title="Edit account details">
+                                                  <i class="material-icons">edit</i> Edit
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i=0; ?>
-                                    @foreach($accounts as $account)
-
-
-
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-
-          			</div>
-        		</div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+      			</div>
+    		</div>
       	</div>
     </div>
 </div>

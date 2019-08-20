@@ -31,7 +31,7 @@ class AccountController extends Controller
         $accounts   = Account::latest()->paginate();
         $owners     = CarOwner::all();
         $companies  = Company::all();
-        $vehicles   = Car::all();
+        $vehicles   = Car::where('status','pending')->get();
         return view('system.accounts.create',compact(['accounts','companies','owners','vehicles']));
     }
 
@@ -44,14 +44,18 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'balance'      =>  '',
-            'user_id'           =>  'required',
-            'drivers_number'    => 'required',
-            'status'            =>  'required'
+            'balance'   =>  'required',
+            'debt'      =>  'required',
+            'car_id'    => 'required',
+            'status'    =>  'required'
         ]);
         Account::create($request->all());
 
-        return redirect()->route('companies.index')->with('success','Insurance company added successfully');
+        $vehicle = Car::where('id',$request->car_id)->first();
+        $vehicle->status = 'active account';
+        $vehicle->save();
+
+        return redirect()->route('accounts.index')->with('success','Account saved successfully');
     }
 
     /**
@@ -67,7 +71,7 @@ class AccountController extends Controller
         if (!$account) {
             return back()->with('danger','Sorry, the car account does not exist');
         }
-        return view('system.accounts.show',compact(['accounts']));
+        return view('system.accounts.show',compact(['accounts','account']));
     }
 
     /**
@@ -78,12 +82,15 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
-        $accounts = Account::all();
+        $accounts   = Account::latest()->paginate();
+        $owners     = CarOwner::all();
+        $companies  = Company::all();
+        $vehicles   = Car::where('status','pending')->get();
         $account = Account::find($id);
         if (!$account) {
             return back()->with('danger','Sorry, the car account does not exist');
         }
-        return view('system.accounts.show',compact(['accounts']));
+        return view('system.accounts.edit',compact(['accounts','account','owners','companies','vehicles']));
     }
 
     /**
@@ -95,7 +102,19 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'balance'   =>  'required',
+            'debt'      =>  'required',
+            'status'    =>  'required'
+        ]);
+
+        Account::find($id)->update($request->all());
+
+        $vehicle = Car::where('id',$request->car_id)->first();
+        $vehicle->status = 'active account';
+        $vehicle->save();
+
+        return redirect()->route('accounts.index')->with('success','Account updated successfully');
     }
 
     /**

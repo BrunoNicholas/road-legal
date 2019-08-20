@@ -51,11 +51,11 @@
                                         <td>{{ $vehicle->date_of_expiry }}</td>
                                         <td>{{ $vehicle->premium_charged }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('vehicles.show', $vehicle->id) }}" rel="tooltip" class="btn btn-info btn-round" style="margin: 2px;" title="View MTP vehicle details">
-                                                <i class="material-icons">done</i>
+                                            <a href="{{ route('vehicles.show', $vehicle->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View MTP vehicle details">
+                                                <i class="material-icons">done</i> View
                                             </a>
-                                            <a href="{{ route('vehicles.edit', $vehicle->id) }}" rel="tooltip" class="btn btn-success btn-round" style="margin: 2px;" title="Edit MTP vehicle details">
-                                                <i class="material-icons">edit</i>
+                                            <a href="{{ route('vehicles.edit', $vehicle->id) }}" rel="tooltip" class="btn btn-success btn-round btn-sm" style="margin: 2px;" title="Edit MTP vehicle details">
+                                                <i class="material-icons">edit</i> Edit
                                             </a>
                                         </td>
                                     </tr>

@@ -1,17 +1,17 @@
 @extends('layouts.site')
-@section('title') Add Vehicles @endsection
+@section('title') Add Account @endsection
 
 @section('styles')  @endsection
-@section('page_name') Register Vehicles | {{ config('app.name') }} @endsection
+@section('page_name') Add Account | {{ config('app.name') }} @endsection
 @section('content')
 <div class="block-header">
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('owners.index') }}"> Drivers &amp; Owners </a></li>
-        {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
-        <li class="breadcrumb-item active" aria-current="page"> Owners &amp; Drivers </li>
+        <li class="breadcrumb-item"><a href="{{ route('owners.index') }}"> Owners &amp; Drivers</a></li> 
+        <li class="breadcrumb-item"><a href="{{ route('accounts.index') }}"> Account </a></li> 
+        <li class="breadcrumb-item active" aria-current="page"> Add Account </li>
     </ol>
-    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} </span>
+    <span class="breadcrumb">Add Account - {{ config('app.name') }} </span>
 </div>
 @include('layouts.includes.notifications')
 <div class="row">
@@ -42,7 +42,7 @@
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_owner_id" id="input-car_owner_id" autofocus>
-                                    <option>Select policy holder</option>
+                                    <option value="">Select policy holder</option>
                                     @foreach($owners as $owner)
                                         <option value="{{ $owner->id }}" title="{{ $owner->owner_name . ' - ' . $owner->owner_telephone . '- ' . $owner->status }}">{{ $owner->owner_name }}</option>
                                     @endforeach
@@ -51,11 +51,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-sm-3 col-form-label">Driver (Policy Holder)</label>
+                        <label class="col-sm-3 col-form-label"> Insurance Company </label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id" autofocus>
-                                    <option title="Select company (If so!)">Select company (If so!)</option>
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id">
+                                    <option value="">Select Company</option>
                                     @foreach($companies as $company)
                                         <option value="{{ $company->id }}" title="{{ $company->company_name . ' - ' . $company->company_email . '- ' . $company->status }}">{{ $company->company_name }}</option>
                                     @endforeach
@@ -64,24 +64,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-sm-3 col-form-label">Select Vehicle (MTP)</label>
+                        <label class="col-sm-3 col-form-label">Select MTP (Vehicle)</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id" autofocus>
-                                    <option title="Select company (If so!)">Select company (If so!)</option>
-                                    @foreach($companies as $company)
-                                        <option value="{{ $company->id }}" title="{{ $company->company_name . ' - ' . $company->company_email . '- ' . $company->status }}">{{ $company->company_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-3 col-form-label">Vehicles</label>
-                        <div class="col-sm-7">
-                            <div class="form-group">
-                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id" autofocus>
-                                    <option title="">Select MTP (Vehicle)</option>
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_id" id="input-car_id">
                                     @foreach($vehicles as $vehicle)
                                         <option value="{{ $vehicle->id }}" title="{{ $vehicle->no_plate . ' - ' . $vehicle->car_model . '- ' . $vehicle->date_of_expiry }}">{{ $vehicle->no_plate }}</option>
                                     @endforeach

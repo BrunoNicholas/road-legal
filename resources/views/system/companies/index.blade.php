@@ -45,11 +45,11 @@
                                       <td>{{ $company->company_telephone }}</td>
                                       <td>{{ $company->status }}</td>
                                       <td class="td-actions text-center">
-                                          <a href="{{ route('companies.show', $company->id) }}" rel="tooltip" class="btn btn-info btn-round" style="margin: 2px;" title="View user details">
-                                              <i class="material-icons">done</i>
+                                          <a href="{{ route('companies.show', $company->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View company details">
+                                              <i class="material-icons">done</i> View
                                           </a>
-                                          <a href="{{ route('companies.edit', $company->id) }}" rel="tooltip" class="btn btn-success btn-round" style="margin: 2px;" title="Edit user details">
-                                              <i class="material-icons">edit</i>
+                                          <a href="{{ route('companies.edit', $company->id) }}" rel="tooltip" class="btn btn-success btn-round btn-sm" style="margin: 2px;" title="Edit company details">
+                                              <i class="material-icons">edit</i> Edit
                                           </a>
                                       </td>
                                   </tr>
