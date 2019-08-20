@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Models\Role;
 use App\Models\Officer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OfficerController extends Controller
 {
@@ -14,7 +17,8 @@ class OfficerController extends Controller
      */
     public function index()
     {
-        //
+        $officers = Officer::latest()->paginate();
+        return view('system.officers.index',compact(['officers']));
     }
 
     /**
@@ -24,7 +28,9 @@ class OfficerController extends Controller
      */
     public function create()
     {
-        //
+        $officers = Officer::latest()->paginate();
+        $users = User::where('role','user')->get();
+        return view('system.officers.create',compact(['officers','users']));
     }
 
     /**
@@ -35,7 +41,20 @@ class OfficerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'user_id'   =>  'required',
+            'status'    =>  'required'
+        ]);
+        Officer::create($request->all());
+
+        $user = User::find($request->user_id);
+        $user->role = 'officer';
+        $user->save();
+
+        DB::table('role_user')->where('user_id',$request->user_id)->delete();
+        $user->attachRole(Role::where('name','officer')->first());
+
+        return redirect()->route('officers.index')->with('success','Officer account saved successfully.');
     }
 
     /**
@@ -44,7 +63,7 @@ class OfficerController extends Controller
      * @param  \App\Models\Officer  $officer
      * @return \Illuminate\Http\Response
      */
-    public function show(Officer $officer)
+    public function show($id)
     {
         //
     }
@@ -55,9 +74,14 @@ class OfficerController extends Controller
      * @param  \App\Models\Officer  $officer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Officer $officer)
+    public function edit($id)
     {
-        //
+        $officer = Officer::find($id);
+        $officers = Officer::all();
+        if (!$officer) {
+            return back()->with('danger','Sorry, officer account does not exist!');
+        }
+        return view('system.officers.edit',compact(['officers','officer']));
     }
 
     /**
@@ -67,7 +91,7 @@ class OfficerController extends Controller
      * @param  \App\Models\Officer  $officer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Officer $officer)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,8 +102,10 @@ class OfficerController extends Controller
      * @param  \App\Models\Officer  $officer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Officer $officer)
+    public function destroy($id)
     {
-        //
+        $item = Officer::find($id);
+        $item->delete();
+        return redirect()->route('officers.index')->with('danger', 'Traffic officer\'s profile deleted successfully!');
     }
 }

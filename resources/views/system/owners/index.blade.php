@@ -47,11 +47,11 @@
                                         <td>{{ App\User::where('id',$owner->user_id)->first()->name }}</td>
                                         <td>{{ $owner->status }}</td>
                                         <td class="td-actions text-center">
-                                            <a href="{{ route('owners.show', $owner->id) }}" rel="tooltip" class="btn btn-info btn-round" style="margin: 2px;" title="View user details">
-                                                <i class="material-icons">done</i>
+                                            <a href="{{ route('owners.show', $owner->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View owner's details">
+                                                <i class="material-icons">done</i> View
                                             </a>
-                                            <a href="{{ route('owners.edit', $owner->id) }}" rel="tooltip" class="btn btn-success btn-round" style="margin: 2px;" title="Edit user details">
-                                                  <i class="material-icons">edit</i>
+                                            <a href="{{ route('owners.edit', $owner->id) }}" rel="tooltip" class="btn btn-success btn-round btn-sm" style="margin: 2px;" title="Edit owner's details">
+                                                  <i class="material-icons">edit</i> Edit
                                             </a>
                                         </td>
                                     </tr>
