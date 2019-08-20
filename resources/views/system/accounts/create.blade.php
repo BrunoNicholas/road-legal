@@ -15,20 +15,113 @@
 </div>
 @include('layouts.includes.notifications')
 <div class="row">
-  	<div class="col-md-12">
-    	<div class="card">
-    		<div class="card-header card-header-success card-header-icon">
-      			<div class="card-icon"> <i class="material-icons">location_searching</i> </div>
-      			<h4 class="card-title"> Add a vehicles owner details | {{ config('app.name') }} </h4>
-    		</div>
-    		<div class="card-body background-transparent">
-    			<div class="row">
-
-
-
-    			</div>
-    		</div>
-    	</div>
+    <div class="col-md-9">
+        <form method="post" action="{{ route('accounts.store') }}" autocomplete="off" class="form-horizontal">
+            @csrf
+            @foreach ($errors->all() as $error)
+                <p class="alert alert-danger">{{ $error }}</p>
+            @endforeach
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <div class="card ">
+                <div class="card-header card-header-rose card-header-icon">
+                    <div class="card-icon"> <i class="material-icons">person</i> </div>
+                    <h4 class="card-title"> Create New Account </h4>
+                </div>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="{{ route('accounts.index') }}" class="btn btn-sm btn-info">Back to list</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Driver (Policy Holder)</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_owner_id" id="input-car_owner_id" autofocus>
+                                    <option>Select policy holder</option>
+                                    @foreach($owners as $owner)
+                                        <option value="{{ $owner->id }}" title="{{ $owner->owner_name . ' - ' . $owner->owner_telephone . '- ' . $owner->status }}">{{ $owner->owner_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Driver (Policy Holder)</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id" autofocus>
+                                    <option title="Select company (If so!)">Select company (If so!)</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company->id }}" title="{{ $company->company_name . ' - ' . $company->company_email . '- ' . $company->status }}">{{ $company->company_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Select Vehicle (MTP)</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id" autofocus>
+                                    <option title="Select company (If so!)">Select company (If so!)</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company->id }}" title="{{ $company->company_name . ' - ' . $company->company_email . '- ' . $company->status }}">{{ $company->company_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Vehicles</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id" autofocus>
+                                    <option title="">Select MTP (Vehicle)</option>
+                                    @foreach($vehicles as $vehicle)
+                                        <option value="{{ $vehicle->id }}" title="{{ $vehicle->no_plate . ' - ' . $vehicle->car_model . '- ' . $vehicle->date_of_expiry }}">{{ $vehicle->no_plate }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Account Balance</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <input class="form-control" name="balance" id="input-balance" type="number" placeholder="Account Balance (UGX)" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label">Account Debt</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <input class="form-control" name="debt" id="input-debt" type="number" placeholder="Account Debt (UGX)" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label" for="input-st"> Account Status </label>
+                        <div class="col-sm-7 text-center">
+                            <div class="form-control">
+                                <input class="" input type="radio" name="status" id="input-st" value="Active" /><label for="input-st">Active</label>
+                                <input class="" input type="radio" name="status" id="input-st1" value="Inactive" /><label for="input-st1">Inactive</label>
+                                <input class="" input type="radio" name="status" id="input-st2" value="Suspended" /><label for="input-st2">Suspended</label>
+                                <input class="" input type="radio" name="status" id="input-st3" value="Blocked" /><label for="input-st3">Blocked</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ml-auto mr-auto">
+                    <button type="submit" class="btn btn-rose btn-sm"><i class="material-icons">done</i> Add Account</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

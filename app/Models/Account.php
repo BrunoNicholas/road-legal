@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CarOwner;
+use App\Models\Company;
+use App\Models\Car;
 
 class Account extends Model
 {
@@ -16,6 +19,7 @@ class Account extends Model
         'company_id',
         'balance',
         'debt',
+        'car_id',
         'status'
     ];
 
@@ -44,5 +48,15 @@ class Account extends Model
     public function companies()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Belonds to relationship connects both 
+     * the user table and the books table
+     *
+     */
+    public function cars()
+    {
+        return $this->belongsTo(Car::class);
     }
 }

@@ -106,11 +106,15 @@
         <div class="card">
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon"> <i class="material-icons">location_searching</i> </div>
-                <h4 class="card-title text-center"> Location </h4>
+                <h4 class="card-title text-center"> Operations </h4>
             </div>
             <div class="card-body background-transparent">
                 <div class="row">
-                    <a href="javascript:void(0)" class="col-md-12" style="min-height: 100px;">  </a>
+                    <div class="col-md-12" style="min-height: 100px;">
+                        <label>Fleet Cars: </label> <span>{{ $company->cars->count() }}</span>
+                        <br>
+                        <label>Known Accounts: </label> <span>{{ $company->accounts->count() }}</span>
+                    </div>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">

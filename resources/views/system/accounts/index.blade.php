@@ -8,10 +8,10 @@
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
         {{-- <li class="breadcrumb-item"><a href="{{ route('companies.index') }}"> Insurance Companies </a></li> --}}
-        {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
-        <li class="breadcrumb-item active" aria-current="page"> Owners &amp; Drivers </li>
+        <li class="breadcrumb-item"><a href="{{ route('owners.index') }}"> Owners &amp; Drivers</a></li> 
+        <li class="breadcrumb-item active" aria-current="page"> Accounts </li>
     </ol>
-    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('owners.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
+    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('accounts.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
 </div>
 @include('layouts.includes.notifications')
 <div class="row">
@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon"> <i class="material-icons">location_searching</i> </div>
-                <h4 class="card-title"> The list of all who own or drive vehicles | {{ config('app.name') }} </h4>
+                <h4 class="card-title"> Find all accounts as per policy holder | {{ config('app.name') }} </h4>
         		</div>
         		<div class="card-body background-transparent">
           			<div class="row">
@@ -28,9 +28,10 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th>Company Name</th>
-                                        <th>Company Email</th>
-                                        <th>Telephone</th>
+                                        <th>Policy Holder</th>
+                                        <th>Company Associate</th>
+                                        <th>Balance</th>
+                                        <th>Pending Debt</th>
                                         <th class="text-right">Status</th>
                                         <th class="text-right">Actions</th>
                                     </tr>

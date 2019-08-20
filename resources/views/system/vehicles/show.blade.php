@@ -39,7 +39,7 @@
                                   <th scope="row">{{ ++$i }}</th>
                                   <td> Comapany Names </td>
                                   <td>{{ App\Models\Company::where('id',$vehicle->company_id)->first()->company_name }}</td>
-                                  <td> <a target="_blank" href="{{ route('companies.show',$vehicle->company_id) }}" class="label btn-sm btn-info">View Company</a> </td>
+                                  <td class="text-center"> <a target="_blank" href="{{ route('companies.show',$vehicle->company_id) }}" class="label btn-sm btn-info">View Company</a> </td>
                               </tr>
                           @endif
                           @if($vehicle->car_owner_id)
@@ -47,7 +47,9 @@
                                   <th scope="row">{{ ++$i }}</th>
                                   <td> Policy Holder </td>
                                   <td>{{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</td>
-                                  <td></td>
+                                  <td class="text-center">
+                                      <a target="_blank" href="{{ route('owners.show',$vehicle->car_owner_id) }}" class="label btn-sm btn-primary">View Holder</a>
+                                  </td>
                               </tr>
                           @endif
                           @if($vehicle->car_category)

@@ -57,4 +57,14 @@ class Car extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    /**
+     * The relationship method for comments.
+     *
+     * as accounts.
+     */
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
 }

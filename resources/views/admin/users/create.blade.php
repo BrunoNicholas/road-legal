@@ -96,7 +96,7 @@
 		                </div>
 		            </div>
 		            <div class="card-footer ml-auto mr-auto">
-		                <button type="submit" class="btn btn-rose">Add User</button>
+		                <button type="submit" class="btn btn-rose"><i class="material-icons">done</i> Add User</button>
 		            </div>
 	        	</div>
 		    </form>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\CarOwner;
+use App\Models\Company;
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -25,8 +28,11 @@ class AccountController extends Controller
      */
     public function create()
     {
-        $accounts = Account::latest()->paginate();
-        return view('system.accounts.create',compact(['accounts']));
+        $accounts   = Account::latest()->paginate();
+        $owners     = CarOwner::all();
+        $companies  = Company::all();
+        $vehicles   = Car::all();
+        return view('system.accounts.create',compact(['accounts','companies','owners','vehicles']));
     }
 
     /**
@@ -37,7 +43,15 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'balance'      =>  '',
+            'user_id'           =>  'required',
+            'drivers_number'    => 'required',
+            'status'            =>  'required'
+        ]);
+        Account::create($request->all());
+
+        return redirect()->route('companies.index')->with('success','Insurance company added successfully');
     }
 
     /**
