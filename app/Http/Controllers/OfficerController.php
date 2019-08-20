@@ -65,7 +65,12 @@ class OfficerController extends Controller
      */
     public function show($id)
     {
-        //
+        $officer = Officer::find($id);
+        $officers = Officer::all();
+        if (!$officer) {
+            return back()->with('danger','Sorry, officer account does not exist!');
+        }
+        return view('system.officers.show',compact(['officers','officer']));
     }
 
     /**
@@ -78,10 +83,11 @@ class OfficerController extends Controller
     {
         $officer = Officer::find($id);
         $officers = Officer::all();
+        $users = User::where('role','user')->get();
         if (!$officer) {
             return back()->with('danger','Sorry, officer account does not exist!');
         }
-        return view('system.officers.edit',compact(['officers','officer']));
+        return view('system.officers.edit',compact(['officers','officer','users']));
     }
 
     /**
@@ -93,7 +99,13 @@ class OfficerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'user_id'   =>  'required',
+            'status'    =>  'required'
+        ]);
+        Officer::find($id)->update($request->all());
+
+        return redirect()->route('officers.show',$id)->with('success','Officer profile updated successfully!');
     }
 
     /**

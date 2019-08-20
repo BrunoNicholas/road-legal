@@ -9,12 +9,12 @@
 <div class="row">
   	<div class="col-md-8">
       	<div class="card">
-        		<div class="card-header card-header-success card-header-icon">
-          			<div class="card-icon"> <i class="material-icons">location_searching</i> </div>
-          			<h4 class="card-title"> Vehicle details and validity | {{ config('app.name') }} </h4>
-        		</div>
-        		<div class="card-body background-transparent">
-          			<div class="row">
+    		<div class="card-header card-header-success card-header-icon">
+      			<div class="card-icon"> <i class="material-icons">location_searching</i> </div>
+      			<h4 class="card-title"> Vehicle details and validity | {{ config('app.name') }} </h4>
+    		</div>
+    		<div class="card-body background-transparent">
+      			<div class="row">
                     <table class="table m-b-0">
                         <thead>
                             <tr>
@@ -84,8 +84,8 @@
                             @endif
                         </tbody>
                     </table>
-          			</div>
-        		</div>
+      			</div>
+    		</div>
       	</div>
     </div>
     <div class="col-md-4">
