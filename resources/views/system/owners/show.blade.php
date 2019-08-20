@@ -106,7 +106,7 @@
                               <form action="{{ route('owners.destroy',$owner->id) }}" method="post"> 
                                       @csrf 
                                       {{ method_field('DELETE') }}
-                                      <button type="button" class="btn btn-rose btn-round btn-block" title="Delete this user!" onclick="confirm('Are you sure you want to delete this user. This is not reversible?')">
+                                      <button type="button" class="btn btn-rose btn-round btn-block" title="Delete this user!" onclick="confirm('Are you sure you want to delete this user. This is not reversible?') ? this.parentElement.submit() : ''">
                                           <i class="material-icons">delete_forever</i> DELETE <div class="ripple-container"></div>
                                       </button>
                                   </form>

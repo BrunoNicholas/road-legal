@@ -4,7 +4,15 @@
 @section('styles')  @endsection
 @section('page_name') Register Vehicles | {{ config('app.name') }} @endsection
 @section('content')
-
+<div class="block-header">
+    <ol class="breadcrumb pull-right">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
+        {{-- <li class="breadcrumb-item"><a href="{{ route('companies.index') }}"> Insurance Companies </a></li> --}}
+        <li class="breadcrumb-item"><a href="{{ route('vehicles.index') }}"> MTP Vehicles </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Add New </li>
+    </ol>
+    <span class="breadcrumb">Add Vehicle Details - {{ config('app.name') }} </span>
+</div>
 @include('layouts.includes.notifications')
 <div class="row">
   	<div class="col-md-9">
@@ -33,7 +41,7 @@
                         <label class="col-sm-2 col-form-label"> Policy Holder </label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_owner_id" data-style="select-with-transition" title="" data-size="100">
+                                <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_owner_id" data-style="select-with-transition" title="" data-size="100" required autofocus>
                                     @foreach($owners as $owner)
                                         <option value="{{ $owner->id }}" title="{{ $owner->owner_name .' - '. $owner->owner_email .' - '. $owner->owner_telephone }}"> {{ $owner->owner_name }} </option>
                                     @endforeach

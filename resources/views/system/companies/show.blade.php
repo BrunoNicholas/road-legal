@@ -117,12 +117,12 @@
                               <a href="{{ route('companies.index') }}" class="btn btn-info btn-round btn-block"> Back </a>
                             </div>
                             <div class="col-md-6">
-                              <form action="{{ route('companies.destroy',$company->id) }}" method="post"> 
-                                      @csrf 
-                                      {{ method_field('DELETE') }}
-                                      <button type="button" class="btn btn-rose btn-round btn-block" title="Delete this company!" onclick="confirm('Are you sure you want to delete this company. This is not reversible?')">
-                                          DELETE <div class="ripple-container"></div>
-                                      </button>
+                                <form action="{{ route('companies.destroy',$company->id) }}" method="post"> 
+                                    @csrf 
+                                    {{ method_field('DELETE') }}
+                                    <button type="button" class="btn btn-rose btn-round btn-block" title="Delete this company!" onclick="confirm('Are you sure you want to delete this company. This is not reversible?') ? this.parentElement.submit() : ''">
+                                        DELETE <div class="ripple-container"></div>
+                                     </button>
                                   </form>
                             </div>
                         </div>

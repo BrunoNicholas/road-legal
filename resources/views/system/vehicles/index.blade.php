@@ -43,7 +43,7 @@
                                     @foreach($vehicles as $vehicle)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $vehicle->car_owner_id }}</td>
+                                            <td><a href="{{ route('owners.show',$vehicle->car_owner_id) }}" title="View Policy Holder's details">{{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</a></td>
                                             <td>{{ $vehicle->policy_no }}</td>
                                             <td>{{ $vehicle->no_plate }}</td>
                                             <td>{{ $vehicle->car_model }}</td>
