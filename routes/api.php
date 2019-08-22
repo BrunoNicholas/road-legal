@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', [
+	'as' 	=> 'awelcome',
+	'uses' 	=> function(){
+		return response()->json(['message'=>'Welcome to ' . config('app.name') . ' API system' ]);
+	}
+]);
+
+Route::apiResource('/user/api-accounts','API\AccountController');
+Route::apiResource('/api-vehicles','API\CarController');
+Route::apiResource('/user/api-questions','API\QuestionController');
+Route::apiResource('/user/api-questions','API\UserController');
