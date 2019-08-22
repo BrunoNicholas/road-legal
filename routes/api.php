@@ -18,13 +18,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/', [
-	'as' 	=> 'awelcome',
+	'as' 	=> 'api-welcome',
 	'uses' 	=> function(){
 		return response()->json(['message'=>'Welcome to ' . config('app.name') . ' API system' ]);
 	}
 ]);
 
-Route::apiResource('/user/api-accounts','API\AccountController');
 Route::apiResource('/api-vehicles','API\CarController');
+
+Route::apiResource('/api-companies','API\CompanyController');
+
+Route::apiResource('/api-users','API\UserController');
+Route::apiResource('/user/api-owners','API\OwnerController');
+Route::apiResource('/user/api-officers','API\OfficerController');
+
+Route::apiResource('/user/api-accounts','API\AccountController');
+
 Route::apiResource('/user/api-questions','API\QuestionController');
-Route::apiResource('/user/api-questions','API\UserController');
