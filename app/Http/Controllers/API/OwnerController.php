@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\CarOwner;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Owner as OwnerResource;
+use App\Http\Requests\OwnerRequest;
+use App\Http\Resources\OwnerCollection;
+
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class OwnerController extends Controller
 {
+    /**
+     * Display the constructor of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
+    
     /**
      * Display a listing of the resource.
      *

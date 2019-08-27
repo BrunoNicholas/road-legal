@@ -36,7 +36,7 @@ class UserController extends Controller
                 'errors' => 'No saved users'
             ]);
         }
-        return UserCollection::collection(User::paginate(10));
+        return UserCollection::collection(User::paginate());
     }
 
     /**

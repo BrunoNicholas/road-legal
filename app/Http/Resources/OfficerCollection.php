@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class OfficerCollection extends ResourceCollection
+class OfficerCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,11 @@ class OfficerCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'    => $this->id,
+            // 
+            'updated'   => $this->updated_at,
+            'added'     => $this->created_at,
+        ];
     }
 }

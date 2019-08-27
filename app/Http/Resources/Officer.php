@@ -14,6 +14,11 @@ class Officer extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'    => $this->id,
+            // 
+            'updated'   => $this->updated_at,
+            'added'     => $this->created_at,
+        ];
     }
 }

@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Account as AccountResource;
+use App\Http\Requests\AccountRequest;
+use App\Http\Resources\AccountCollection;
+
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class AccountController extends Controller
 {
+    /**
+     * Display the constructor of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
+    
     /**
      * Display a listing of the resource.
      *

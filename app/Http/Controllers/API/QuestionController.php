@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Question as QuestionResource;
+use App\Http\Requests\QuestionRequest;
+use App\Http\Resources\QuestionCollection;
+
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller
 {
+    /**
+     * Display the constructor of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
+    
     /**
      * Display a listing of the resource.
      *

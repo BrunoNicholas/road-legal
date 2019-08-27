@@ -3,10 +3,28 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use App\Models\Company;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Company as CompanyResource;
+use App\Http\Requests\CompanyRequest;
+use App\Http\Resources\CompanyCollection;
+
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class CompanyController extends Controller
 {
+    /**
+     * Display the constructor of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
+    
     /**
      * Display a listing of the resource.
      *

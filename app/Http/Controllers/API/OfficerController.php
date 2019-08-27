@@ -2,11 +2,30 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Officer;
 use Illuminate\Http\Request;
+
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Officer as OfficerResource;
+use App\Http\Requests\OfficerRequest;
+use App\Http\Resources\OfficerCollection;
+
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class OfficerController extends Controller
 {
+    /**
+     * Display the constructor of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
+    
     /**
      * Display a listing of the resource.
      *
