@@ -4,7 +4,7 @@
 @section('styles')  @endsection
 @section('page_name') Insurance Company Details | {{ config('app.name') }} @endsection
 @section('content')
-<div class="block-header">
+<div class="block-header not-info">
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('companies.index') }}"> Insurance Companies </a></li>

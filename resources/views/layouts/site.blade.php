@@ -19,6 +19,11 @@
   	<link href="{{ asset('assets/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
   	<!-- CSS Just for demo purpose, don't include it in your project -->
   	@yield('styles')
+    <style type="text/css">
+      @media only screen and (max-width: 600px) {
+        .not-info { display: none; }
+      }
+    </style>
   	<!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){

@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-12">
 	        <div class="card ">
-	            <div class="card-header ">
+	            <div class="card-header not-info">
 	              	<h4 class="card-title">Administrator Control Panel - <small class="description"> System &amp; User Controls </small></h4>
 	            </div>
 	            <div class="card-body ">

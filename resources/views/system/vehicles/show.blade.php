@@ -4,7 +4,7 @@
 @section('styles')  @endsection
 @section('page_name') View Vehicle Details | {{ config('app.name') }} @endsection
 @section('content')
-<div class="block-header">
+<div class="block-header not-info">
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
         {{-- <li class="breadcrumb-item"><a href="{{ route('companies.index') }}"> Insurance Companies </a></li> --}}
@@ -23,149 +23,151 @@
         		</div>
         		<div class="card-body background-transparent">
           			<div class="row">
-                    <table class="table m-b-0">
-                      <thead>
-                          <tr>
-                              <th scope="col"><b>#</b></th>
-                              <th scope="col"><b>Attribute</b></th>
-                              <th scope="col"><b>Value</b></th>
-                              <th scope="col"><b>More</b></th>
-                          </tr>
-                      </thead>
-                      <?php $i=0; ?>
-                      <tbody>
-                          @if($vehicle->company_id)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td> Comapany Names </td>
-                                  <td>{{ App\Models\Company::where('id',$vehicle->company_id)->first()->company_name }}</td>
-                                  <td class="text-center"> <a target="_blank" href="{{ route('companies.show',$vehicle->company_id) }}" class="label btn-sm btn-info">View Company</a> </td>
-                              </tr>
-                          @endif
-                          @if($vehicle->car_owner_id)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td> Policy Holder </td>
-                                  <td>{{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</td>
-                                  <td class="text-center">
-                                      <a target="_blank" href="{{ route('owners.show',$vehicle->car_owner_id) }}" class="label btn-sm btn-primary">View Holder</a>
-                                  </td>
-                              </tr>
-                          @endif
-                          @if($vehicle->car_category)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td> Ownership </td>
-                                  <td>{{ $vehicle->car_category }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->car_model)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Model</td>
-                                  <td>{{ $vehicle->car_model }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->reg_no)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Registration Number </td>
-                                  <td>{{ $vehicle->reg_no }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->policy_no)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Policy Number</td>
-                                  <td>{{ $vehicle->policy_no }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->no_plate)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Number Plate</td>
-                                  <td>{{ $vehicle->no_plate }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->seating_capacity)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Seating Capacity</td>
-                                  <td>{{ $vehicle->seating_capacity }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->gross_weight)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Gross weight</td>
-                                  <td>{{ $vehicle->gross_weight }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->car_price)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Car Price </td>
-                                  <td>{{ $vehicle->car_price . ' ' . $vehicle->price_units }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->premium_charged)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Premuim Charged</td>
-                                  <td>{{ $vehicle->premium_charged . ' ' . $vehicle->price_units }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->date_of_issue)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Date of Issuing</td>
-                                  <td>{{ $vehicle->date_of_issue }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->date_of_expiry)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Expiry Date</td>
-                                  <td>{{ $vehicle->date_of_expiry }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->issuing_authority)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Issuing Authority</td>
-                                  <td>{{ $vehicle->issuing_authority }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->created_at)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>Date added the record</td>
-                                  <td>{{ $vehicle->created_at }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                          @if($vehicle->status)
-                              <tr>
-                                  <th scope="row">{{ ++$i }}</th>
-                                  <td>System MTP Status</td>
-                                  <td>{{ $vehicle->status }}</td>
-                                  <td></td>
-                              </tr>
-                          @endif
-                      </tbody>
-                  </table>
+                    <div class="table-responsive">
+                        <table class="table m-b-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><b>#</b></th>
+                                    <th scope="col"><b>Attribute</b></th>
+                                    <th scope="col"><b>Value</b></th>
+                                    <th scope="col"><b>More</b></th>
+                                </tr>
+                            </thead>
+                            <?php $i=0; ?>
+                            <tbody>
+                                @if($vehicle->company_id)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td> Comapany Names </td>
+                                        <td>{{ App\Models\Company::where('id',$vehicle->company_id)->first()->company_name }}</td>
+                                        <td class="text-center"> <a target="_blank" href="{{ route('companies.show',$vehicle->company_id) }}" class="label btn-sm btn-info">View Company</a> </td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->car_owner_id)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td> Policy Holder </td>
+                                        <td>{{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</td>
+                                        <td class="text-center">
+                                            <a target="_blank" href="{{ route('owners.show',$vehicle->car_owner_id) }}" class="label btn-sm btn-primary">View Holder</a>
+                                        </td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->car_category)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td> Ownership </td>
+                                        <td>{{ $vehicle->car_category }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->car_model)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Model</td>
+                                        <td>{{ $vehicle->car_model }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->reg_no)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Registration Number </td>
+                                        <td>{{ $vehicle->reg_no }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->policy_no)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Policy Number</td>
+                                        <td>{{ $vehicle->policy_no }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->no_plate)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Number Plate</td>
+                                        <td>{{ $vehicle->no_plate }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->seating_capacity)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Seating Capacity</td>
+                                        <td>{{ $vehicle->seating_capacity }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->gross_weight)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Gross weight</td>
+                                        <td>{{ $vehicle->gross_weight }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->car_price)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Car Price </td>
+                                        <td>{{ $vehicle->car_price . ' ' . $vehicle->price_units }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->premium_charged)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Premuim Charged</td>
+                                        <td>{{ $vehicle->premium_charged . ' ' . $vehicle->price_units }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->date_of_issue)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Date of Issuing</td>
+                                        <td>{{ $vehicle->date_of_issue }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->date_of_expiry)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Expiry Date</td>
+                                        <td>{{ $vehicle->date_of_expiry }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->issuing_authority)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Issuing Authority</td>
+                                        <td>{{ $vehicle->issuing_authority }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->created_at)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>Date added the record</td>
+                                        <td>{{ $vehicle->created_at }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($vehicle->status)
+                                    <tr>
+                                        <th scope="row">{{ ++$i }}</th>
+                                        <td>System MTP Status</td>
+                                        <td>{{ $vehicle->status }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
           			</div>
         		</div>
       	</div>

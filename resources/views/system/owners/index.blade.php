@@ -4,7 +4,7 @@
 @section('styles')  @endsection
 @section('page_name') Drivers &amp; Owners | {{ config('app.name') }} @endsection
 @section('content')
-<div class="block-header">
+<div class="block-header not-info">
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
         {{-- <li class="breadcrumb-item"><a href="{{ route('companies.index') }}"> Insurance Companies </a></li> --}}
@@ -17,10 +17,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-header-success card-header-icon">
-                <div class="card-icon"> <i class="material-icons">location_searching</i> </div>
-                <h4 class="card-title"> The list of all who own or drive vehicles | {{ config('app.name') }} </h4>
-    		</div>
     		<div class="card-body background-transparent">
       			<div class="row">
                     <div class="table-responsive">

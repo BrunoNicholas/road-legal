@@ -16,7 +16,7 @@
     	<div class="card">
     		<div class="card-header card-header-success card-header-icon">
       			<div class="card-icon"> <i class="material-icons">home</i> </div>
-      			<h4 class="card-title"> {{ Auth::user()->name }} | {{ App\Models\Role::where('name',Auth::user()->role)->first()->display_name }} <small> - List of insurance companies registered!</small> </h4>
+      			<h4 class="card-title"> {{ Auth::user()->name }} ({{ App\Models\Role::where('name',Auth::user()->role)->first()->display_name }}) <small> - List of insurance companies registered!</small> </h4>
     		</div>
     		<div class="card-body background-transparent" style="padding: 0px;">
     			<div class="row">
