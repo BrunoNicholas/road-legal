@@ -16,7 +16,7 @@
 @include('layouts.includes.notifications')
 <div class="row">
   	<div class="col-md-9">
-        <form method="post" action="{{ route('companies.store') }}" autocomplete="off" class="form-horizontal">
+        <form method="post" name="cal" action="{{ route('companies.store') }}" autocomplete="off" class="form-horizontal">
             @csrf
             @foreach ($errors->all() as $error)
                 <p class="alert alert-danger">{{ $error }}</p>
@@ -74,6 +74,10 @@
                       <div class="col-sm-7">
                           <div class="form-group">
                               <input class="form-control" input type="text" name="location" id="input-un" placeholder="0.246 32.011" />
+                              <button type="button" onclick="getLocation()" class="btn btn-sm btn-info"> 
+                                  <i class="fa fa-locator"></i> Get Current Location
+                              </button>
+                              <button type="button" onclick="cal.location.value=document.getElementById('demo').innerHTML"  class="btn btn-sm btn-info">Use Cordinates</button> <p id="demo"></p>
                           </div>
                       </div>
                     </div>
@@ -97,4 +101,19 @@
         </form>
     </div>
 </div>
+@endsection
+@section('scripts')
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+          if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition); } 
+          else { x.innerHTML = "Geolocation is not supported by this browser."; }
+        }
+
+        function showPosition(position) {
+          x.innerHTML = position.coords.latitude + ' ' + position.coords.longitude;
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm092t3Kz-SgMCDPib5_cD2GNBnHYnnus"></script>
 @endsection

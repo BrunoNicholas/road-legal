@@ -66,7 +66,7 @@
                       <label class="col-sm-2 col-form-label" for="input-un"> Number of drivers </label>
                       <div class="col-sm-7">
                           <div class="form-group">
-                              <input class="form-control" input type="number" value="{{ $company->number }}" name="drivers_number" id="input-un" placeholder="Drivers number" />
+                              <input class="form-control" input type="number" value="{{ $company->drivers_number }}" name="drivers_number" id="input-un" placeholder="Drivers number" />
                           </div>
                       </div>
                     </div>
@@ -83,16 +83,16 @@
                       <label class="col-sm-2 col-form-label" for="input-st"> Status </label>
                       <div class="col-sm-7">
                           <div class="form-control">
-                              <input class="" input type="radio" name="status" id="input-st" value="Active" @if ($company->status)
+                              <input class="" input type="radio" name="status" id="input-st" value="Active" @if ($company->status == 'Active')
                                 checked 
                               @endif/><label for="input-st">Active</label>
-                              <input class="" input type="radio" name="status" id="input-st1" value="Busy" @if ($company->status)
+                              <input class="" input type="radio" name="status" id="input-st1" value="Busy" @if ($company->status == 'Busy')
                                 checked 
                               @endif/><label for="input-st1">Busy</label>
-                              <input class="" input type="radio" name="status" id="input-st2" value="Pending" @if ($company->status)
+                              <input class="" input type="radio" name="status" id="input-st2" value="Pending" @if ($company->status == 'Pending')
                                 checked 
                               @endif/><label for="input-st2">Pending</label>
-                              <input class="" input type="radio" name="status" id="input-st3" value="Blocked" @if ($company->status)
+                              <input class="" input type="radio" name="status" id="input-st3" value="Blocked" @if ($company->status == 'Blocked')
                                 checked 
                               @endif/><label for="input-st3">Blocked</label>
                           </div>

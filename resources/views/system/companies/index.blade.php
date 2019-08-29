@@ -7,8 +7,6 @@
 <div class="block-header not-info">
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-        {{-- <li class="breadcrumb-item"><a href="{{ route('categories.index') }}"> Market Categories</a></li> --}}
-        {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
         <li class="breadcrumb-item active" aria-current="page"> Insurance Companies </li>
     </ol>
     <span class="breadcrumb">Insurance Companies - {{ config('app.name') }} @role(['super-admin','admin'])| <a href="{{ route('companies.create') }}"> <button class="badge btn-info btn-sm"> Add New </button> </a>@endrole </span>
@@ -60,24 +58,24 @@
 </div>
 @endsection
 @section('scripts')
-  <script>
-    $(document).ready(function() {
-        $('#datatables').fadeIn(1100);
-        $('#datatables').DataTable({
-          "pagingType": "full_numbers",
-          "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-          ],
-          responsive: true,
-          language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Search users",
-          },
-          "columnDefs": [
-            { "orderable": false, "targets": 5 },
-          ],
+    <script>
+      $(document).ready(function() {
+          $('#datatables').fadeIn(1100);
+          $('#datatables').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+              [10, 25, 50, -1],
+              [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+              search: "_INPUT_",
+              searchPlaceholder: "Search users",
+            },
+            "columnDefs": [
+              { "orderable": false, "targets": 5 },
+            ],
+          });
         });
-      });
-  </script>
+    </script>
 @endsection

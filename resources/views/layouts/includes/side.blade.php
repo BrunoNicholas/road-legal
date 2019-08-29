@@ -4,7 +4,7 @@
 		Tip 2: you can also add an image using data-image tag
 	-->
 	<div class="logo">
-		<a href="{{ route('home') }}" class="simple-text logo-mini"> <b>3P</b> </a>
+		<a href="{{ route('home') }}" class="simple-text logo-mini"> <b>NC</b> </a>
 		<a href="{{ route('home') }}" class="simple-text logo-normal"> {{ config('app.name') }} </a>
 	</div>
 	<div class="sidebar-wrapper">
@@ -41,19 +41,19 @@
 					<i><img style="width:25px" src="{{ asset('assets/img/favicon.png') }}"></i>
 					<p> START <b class="caret"></b></p>
 				</a>
-				<div class="collapse  @if(route('home') == Request::fullUrl() || route('admin') == Request::fullUrl()) show @endif" id="laravelExample">
+				<div class="collapse  @if(route('home') == Request::fullUrl() || route('admin') == Request::fullUrl() || route('user.home') == Request::fullUrl()) show @endif" id="laravelExample">
 					<ul class="nav">
-						<li class="nav-item @if(route('home') == Request::fullUrl()) active @endif">
+						<li class="nav-item @if(route('home') == Request::fullUrl() || route('admin') == Request::fullUrl()) active @endif">
 							<a class="nav-link" href="{{ route('home') }}">
 								<span class="sidebar-mini"> H </span>
 								<span class="sidebar-normal"> Home </span>
 							</a>
 						</li>
 						@role(['super-admin','admin'])
-							<li class="nav-item @if(route('admin') == Request::fullUrl()) active @endif">
-								<a class="nav-link" href="{{ route('admin') }}">
-									<span class="sidebar-mini"> A </span>
-									<span class="sidebar-normal"> Administrator </span>
+							<li class="nav-item @if(route('user.home') == Request::fullUrl()) active @endif">
+								<a class="nav-link" href="{{ route('user.home') }}">
+									<span class="sidebar-mini"> UH </span>
+									<span class="sidebar-normal"> User Home </span>
 								</a>
 							</li>
 						@endrole

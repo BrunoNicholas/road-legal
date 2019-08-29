@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
 
         $user_admin = new User();
         $user_admin->name = 'Nathan Kiyemba';
-        $user_admin->email = 'nathan@email.com';
+        $user_admin->email = 'nithernk11@gmail.com';
         $user_admin->password = bcrypt('dollar');
         $user_admin->gender = 'Male';
         $user_admin->telephone = '';
