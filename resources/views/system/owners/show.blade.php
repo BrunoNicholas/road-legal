@@ -121,19 +121,48 @@
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Give Fine | </h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                  <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
+                                            <form action="{{ route('crimes.store') }}" method="POST">
+                                                @csrf
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Give Road Fine | {{ $owner->owner_name }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col-md-12">
+
+                                                        <div class="form-group">
+                                                            <label class="floating">Category</label>
+                                                            <select name="category" class="selectpicker col-sm-12 pl-0 pr-0">
+                                                                <option value="Others">Select Crime Category</option>
+                                                                <option value="Bad Driving">Bad Driving</option>
+                                                                <option value="DMC Of MTP" title="Dangerous Mechanical Condition">DMC Of MTP</option>
+                                                                <option value="Unlicensed Driver">Unlicensed Driver</option>
+                                                                <option value="Others">Others</option>
+                                                            </select>
+                                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="floating">Charge Amount</label>
+                                                            <input type="number" name="fine_amount" class="form-control" placeholder="Amount in UGX">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="floating">Description</label>
+                                                            <textarea name="description" class="form-control" placeholder="The crime details and reference..."></textarea>
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="floating">One</label>
+                                                            <input type="text" name="" class="form-control" placeholder="Right here ...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
