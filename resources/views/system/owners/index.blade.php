@@ -2,7 +2,7 @@
 @section('title') Drivers @endsection
 
 @section('styles')  @endsection
-@section('page_name') Drivers &amp; Owners | {{ config('app.name') }} @endsection
+@section('page_name') Drivers &amp; Owners (Policy Holders) | {{ config('app.name') }} @endsection
 @section('content')
 <div class="block-header not-info">
     <ol class="breadcrumb pull-right">
@@ -69,12 +69,12 @@
             "pagingType": "full_numbers",
             "lengthMenu": [
               [10, 25, 50, -1],
-              [10, 25, 50, "All"]
+              [10, 25, 50, "View All"]
             ],
             responsive: true,
             language: {
               search: "_INPUT_",
-              searchPlaceholder: "Search users",
+              searchPlaceholder: "Search policy holders",
             },
             "columnDefs": [
               { "orderable": false, "targets": 5 },

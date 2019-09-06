@@ -75,7 +75,7 @@
             responsive: true,
             language: {
               search: "_INPUT_",
-              searchPlaceholder: "Search users",
+              searchPlaceholder: "Search policy holders",
             },
             "columnDefs": [
               { "orderable": false, "targets": 5 },

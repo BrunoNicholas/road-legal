@@ -16,7 +16,7 @@ class CreateCrimesTable extends Migration
         Schema::create('crimes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned(); // created by
-            $table->integer('officer_id')->unsigned();
+            $table->integer('officer_id')->unsigned()->nullable();
             $table->integer('car_owner_id')->unsigned();
             $table->integer('car_id')->unsigned();
             $table->string('category')->default('bad driving');

@@ -1,8 +1,8 @@
 @extends('layouts.site')
-@section('title') Edit Vehicle Details @endsection
+@section('title') Edit Cars Owner's Details @endsection
 
 @section('styles')  @endsection
-@section('page_name') Edit Vehicle Details | {{ config('app.name') }} @endsection
+@section('page_name') Edit Policy Holder's Details | {{ config('app.name') }} @endsection
 @section('content')
 
 @include('layouts.includes.notifications')

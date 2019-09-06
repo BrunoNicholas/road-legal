@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crime;
 use App\Models\CarOwner;
 use Illuminate\Http\Request;
 
@@ -58,11 +59,12 @@ class CarOwnerController extends Controller
     public function show($id)
     {
         $owners = CarOwner::latest()->paginate();
-        $owner = CarOwner::find($id);
+        $owner  = CarOwner::find($id);
+        $crimes = Crime::where('car_owner_id',$id)->get();
         if (!$owner) {
             return back()->with('danger','Sorry, the car owner does not exist');
         }
-        return view('system.owners.show',compact(['owner','owners']));
+        return view('system.owners.show',compact(['owner','owners','crimes']));
     }
 
     /**

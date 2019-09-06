@@ -1,17 +1,17 @@
 @extends('layouts.site')
-@section('title') Add Vehicles @endsection
+@section('title') Add Car Owners @endsection
 
 @section('styles')  @endsection
-@section('page_name') Register Vehicles | {{ config('app.name') }} @endsection
+@section('page_name') Register Policy Holder | {{ config('app.name') }} @endsection
 @section('content')
 <div class="block-header not-info">
     <ol class="breadcrumb pull-right">
         <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('owners.index') }}"> Drivers &amp; Owners </a></li>
         {{-- <li class="breadcrumb-item"><a href="{{ route('roles.index') }}"> User Roles</a></li> --}}
-        <li class="breadcrumb-item active" aria-current="page"> Owners &amp; Drivers </li>
+        <li class="breadcrumb-item active" aria-current="page"> Add New </li>
     </ol>
-    <span class="breadcrumb">Vehicle Owners &amp; Drivers - {{ config('app.name') }} </span>
+    <span class="breadcrumb">Add new vehicle owners/drivers (Policy Holder) - {{ config('app.name') }} </span>
 </div>
 @include('layouts.includes.notifications')
 <div class="row">
