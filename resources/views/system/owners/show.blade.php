@@ -1,8 +1,8 @@
 @extends('layouts.site')
-@section('title') Vehicle Details @endsection
+@section('title') Owner Details @endsection
 
 @section('styles')  @endsection
-@section('page_name') View Vehicle Details | {{ config('app.name') }} @endsection
+@section('page_name') Policy Holder's Details | {{ config('app.name') }} @endsection
 @section('content')
 
 @include('layouts.includes.notifications')
@@ -102,6 +102,7 @@
                             <div class="col-md-6">
                               <a href="{{ route('owners.index') }}" class="btn btn-info btn-round btn-block"> Back </a>
                             </div>
+                            @role(['super-admin','admin'])
                             <div class="col-md-6">
                               <form action="{{ route('owners.destroy',$owner->id) }}" method="post"> 
                                       @csrf 
@@ -111,8 +112,49 @@
                                       </button>
                                   </form>
                             </div>
+                            @endrole
+                            @role(['super-admin','admin','officer'])
+                            <div class="col-md-12 text-center">
+                                <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#exampleModal">
+                                    Issue Fine (Road Crime Fine)
+                                </button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Give Fine | </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endrole
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-success card-header-icon">
+                <h4 class="card-title"> Crimes by {{ $owner->owner_name }} | {{ config('app.name') }} </h4>
+            </div>
+            <div class="card-body background-transparent">
+                <div class="row">
+
+
+
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Account;
+use App\Models\Crime;
 use App\Models\Car;
 
 class CarOwner extends Model
@@ -57,5 +58,15 @@ class CarOwner extends Model
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Belonds to relationship connects both 
+     * the crimes table and the books table
+     *
+     */
+    public function crimes()
+    {
+        return $this->hasMany(Crime::class);
     }
 }

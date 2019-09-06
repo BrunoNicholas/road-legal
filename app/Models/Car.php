@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
 use App\Models\CarOwner;
+use App\Models\Crime;
 
 class Car extends Model
 {
@@ -68,5 +69,15 @@ class Car extends Model
     public function accounts()
     {
         return $this->hasMany(Account::class);
+    }
+
+    /**
+     * The relationship method for comments.
+     *
+     * as crimes.
+     */
+    public function crimes()
+    {
+        return $this->hasMany(Crime::class);
     }
 }

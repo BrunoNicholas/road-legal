@@ -12,6 +12,7 @@ use App\Models\Officer;
 use App\Models\Company;
 use App\Models\CarOwner;
 use App\Models\Question;
+use App\Models\Crime;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -84,5 +85,15 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function questions()
     {
         return $this->hasMany(Question::class);
+    }
+
+    /**
+     * The relationship method for comments.
+     *
+     * as crimes.
+     */
+    public function crimes()
+    {
+        return $this->hasMany(Crime::class);
     }
 }

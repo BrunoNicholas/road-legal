@@ -16,7 +16,7 @@ class Owner extends JsonResource
     {
         return [
             'id'    => $this->id,
-            // 
+            //
             'updated'   => $this->updated_at,
             'added'     => $this->created_at,
         ];
