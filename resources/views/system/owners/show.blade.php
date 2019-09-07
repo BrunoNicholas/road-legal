@@ -144,6 +144,16 @@
                                                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                                         </div>
                                                         <div class="form-group">
+                                                            <label class="floating">Vehicle (MTP)</label>
+                                                            <select name="car_id" class="selectpicker col-sm-12 pl-0 pr-0">
+                                                                <option value="Others">Select Vehicle</option>
+                                                                @foreach($vehicles as $vehicle)
+                                                                    <option value="{{ $vehicle->id }}">{{ $vehicle->no_plate . ' - ' . $vehicle->car_model . '('. $vehicle->date_of_expiry .')'  }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                        </div>
+                                                        <div class="form-group">
                                                             <label class="floating">Charge Amount</label>
                                                             <input type="number" name="fine_amount" class="form-control" placeholder="Amount in UGX">
                                                         </div>
@@ -152,10 +162,8 @@
                                                             <textarea name="description" class="form-control" placeholder="The crime details and reference..."></textarea>
 
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="floating">One</label>
-                                                            <input type="text" name="" class="form-control" placeholder="Right here ...">
-                                                        </div>
+                                                        <input type="hidden" name="officer_id" value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="car_owner_id" value="{{ $owner->id }}">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
