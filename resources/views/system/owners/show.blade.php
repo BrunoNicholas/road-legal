@@ -82,6 +82,32 @@
                                     <td></td>
                                 </tr>
                             @endif
+                            @if($owner->cars())
+                                <tr>
+                                    <th scope="row">{{ ++$i }}</th>
+                                    <td>MTP (Vehicles)</td>
+                                    <td>{{ $owner->cars()->count() }} Registered MTPs</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary" type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#carsModal"> View MPT </button>
+
+                                        <div class="modal fade" id="carsModal" tabindex="-1" role="dialog" aria-labelledby="carsModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Cars Owned by {{ $owner->owner_name }}
+                                                        </div>
+                                                        <div class="card-body">
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
       			</div>
@@ -121,6 +147,7 @@
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
+
                                             <form action="{{ route('crimes.store') }}" method="POST">
                                                 @csrf
                                                 <div class="modal-header">
@@ -171,6 +198,7 @@
                                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
