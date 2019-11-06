@@ -28,6 +28,7 @@
                                     <th>User Email</th>
                                     <th>Telephone</th>
                                     <th>Added By</th>
+                                    <th>MTS No.</th>
                                     <th class="text-right">Status</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
@@ -41,6 +42,7 @@
                                         <td>{{ $owner->owner_email }}</td>
                                         <td>{{ $owner->owner_telephone }}</td>
                                         <td>{{ App\User::where('id',$owner->user_id)->first()->name }}</td>
+                                        <td>{{ $owner->cars()->count() }}</td>
                                         <td>{{ $owner->status }}</td>
                                         <td class="td-actions text-center">
                                             <a href="{{ route('owners.show', $owner->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View owner's details">

@@ -98,7 +98,11 @@
                                                             Cars Owned by {{ $owner->owner_name }}
                                                         </div>
                                                         <div class="card-body">
-                                                            
+                                                            <ul class="list-group">  
+                                                                @foreach($owner->cars() as $cars)
+                                                                    <li class="list-group-item">First item</li>
+                                                                @endforeach
+                                                            </ul>
                                                         </div>
                                                     </div>
 
