@@ -44,7 +44,7 @@
                                 <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_owner_id" id="input-car_owner_id" autofocus>
                                     <option value="">Select policy holder</option>
                                     @foreach($owners as $owner)
-                                        <option value="{{ $owner->id }}" title="{{ $owner->owner_name . ' - ' . $owner->owner_telephone . '- ' . $owner->status }}">{{ $owner->owner_name }}</option>
+                                        <option value="{{ $owner->id }}" title="{{ $owner->owner_name . ' - ' . $owner->owner_telephone . '- ' . $owner->status }}">{{ $owner->owner_name }} - {{ $owner->cars->count() }} MTPs</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -57,7 +57,7 @@
                                 <select class="selectpicker col-sm-12 pl-0 pr-0" name="company_id" id="input-company_id">
                                     <option value="">Select Company</option>
                                     @foreach($companies as $company)
-                                        <option value="{{ $company->id }}" title="{{ $company->company_name . ' - ' . $company->company_email . '- ' . $company->status }}">{{ $company->company_name }}</option>
+                                        <option value="{{ $company->id }}" title="{{ $company->company_name . ' - ' . $company->company_email . '- ' . $company->status }}">{{ $company->company_name }} - {{ $company->cars->count() }} MPTs</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <select class="selectpicker col-sm-12 pl-0 pr-0" name="car_id" id="input-car_id">
                                     @foreach($vehicles as $vehicle)
-                                        <option value="{{ $vehicle->id }}" title="{{ $vehicle->no_plate . ' - ' . $vehicle->car_model . '- ' . $vehicle->date_of_expiry }}">{{ $vehicle->no_plate }}</option>
+                                        <option value="{{ $vehicle->id }}" title="{{ $vehicle->no_plate . ' - ' . $vehicle->car_model . '- ' . $vehicle->date_of_expiry }}">{{ $vehicle->no_plate }} - {{ $vehicle->car_model }} (Exp: {{ $vehicle->date_of_expiry }}), {{ App\Models\CarOwner::where('id',$vehicle->car_owner_id)->first()->owner_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

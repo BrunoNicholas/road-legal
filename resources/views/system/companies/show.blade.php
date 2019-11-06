@@ -89,6 +89,36 @@
                                 <td></td>
                             </tr>
                         @endif
+                        @if(sizeof($company->cars) > 0)
+                            <tr>
+                                <th scope="row">{{ ++$i }}</th>
+                                <td>MTP (Vehicles)</td>
+                                <td>{{ $company->cars()->count() }} Registered MTPs</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#carsModal"> View MPT </button>
+
+                                    <div class="modal fade" id="carsModal" tabindex="-1" role="dialog" aria-labelledby="carsModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        Cars registered under {{ $company->company_name }}
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <ul class="list-group"> <?php $b=0; ?>
+                                                            @foreach($company->cars as $car)
+                                                                <li class="list-group-item" style="border-bottom: thin solid green;">{{ ++$b }}. <a href="{{ route('vehicles.show',$car->id) }}">{{ $car->car_model }} - {{ $car->no_plate }} (Exp: {{ $car->date_of_expiry }}), Status: {{ $car->status }}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

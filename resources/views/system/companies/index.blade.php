@@ -25,6 +25,8 @@
                                   <th>Company Name</th>
                                   <th>Company Email</th>
                                   <th>Telephone</th>
+                                  <th>MTPs No.</th>
+                                  <th>Accounts</th>
                                   <th class="text-right">Status</th>
                                   <th class="text-right">Actions</th>
                               </tr>
@@ -37,6 +39,8 @@
                                       <td>{{ $company->company_name }}</td>
                                       <td>{{ $company->company_email }}</td>
                                       <td>{{ $company->company_telephone }}</td>
+                                      <td class="text-center">{{ $company->cars->count() }}</td>
+                                      <td class="text-center">{{ $company->accounts->count() }}</td>
                                       <td>{{ $company->status }}</td>
                                       <td class="td-actions text-center">
                                           <a href="{{ route('companies.show', $company->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View company details">

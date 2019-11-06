@@ -30,7 +30,7 @@
                                     <th>Model/Make</th>
                                     <th>Seating Capacity</th>
                                     <th>Expiry Date</th>
-                                    <th class="text-right">Premium Charged</th>
+                                    <th class="text-center">MTP Status</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -43,9 +43,9 @@
                                         <td>{{ $vehicle->policy_no }}</td>
                                         <td>{{ $vehicle->no_plate }}</td>
                                         <td>{{ $vehicle->car_model }}</td>
-                                        <td>{{ $vehicle->seating_capacity }}</td>
+                                        <td class="text-center">{{ $vehicle->seating_capacity }}</td>
                                         <td>{{ $vehicle->date_of_expiry }}</td>
-                                        <td>{{ $vehicle->premium_charged }}</td>
+                                        <td style="text-transform: capitalize;">{{ $vehicle->status }}</td>
                                         <td class="td-actions text-center">
                                             <a href="{{ route('vehicles.show', $vehicle->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View MTP vehicle details">
                                                 <i class="material-icons">done</i> View

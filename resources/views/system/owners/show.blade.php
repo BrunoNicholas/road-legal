@@ -14,7 +14,7 @@
       			<h4 class="card-title"> Vehicle details and validity | {{ config('app.name') }} </h4>
     		</div>
     		<div class="card-body background-transparent">
-      			<div class="row">
+      			<div class="table-responsive">
                     <table class="table m-b-0">
                         <thead>
                             <tr>
@@ -82,7 +82,7 @@
                                     <td></td>
                                 </tr>
                             @endif
-                            @if($owner->cars())
+                            @if(sizeof($owner->cars) > 0)
                                 <tr>
                                     <th scope="row">{{ ++$i }}</th>
                                     <td>MTP (Vehicles)</td>
@@ -95,12 +95,12 @@
                                                 <div class="modal-content">
                                                     <div class="card">
                                                         <div class="card-header">
-                                                            Cars Owned by {{ $owner->owner_name }}
+                                                            Cars registered under {{ $owner->owner_name }}
                                                         </div>
                                                         <div class="card-body">
-                                                            <ul class="list-group">  
-                                                                @foreach($owner->cars() as $cars)
-                                                                    <li class="list-group-item">First item</li>
+                                                            <ul class="list-group"> <?php $b=0; ?>
+                                                                @foreach($owner->cars as $car)
+                                                                    <li class="list-group-item" style="border-bottom: thin solid green;">{{ ++$b }}. <a href="{{ route('vehicles.show',$car->id) }}">{{ $car->car_model }} - {{ $car->no_plate }} (Exp: {{ $car->date_of_expiry }}), Status: {{ $car->status }}</a></li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -134,13 +134,13 @@
                             </div>
                             @role(['super-admin','admin'])
                             <div class="col-md-6">
-                              <form action="{{ route('owners.destroy',$owner->id) }}" method="post"> 
-                                      @csrf 
-                                      {{ method_field('DELETE') }}
-                                      <button type="button" class="btn btn-rose btn-round btn-block" title="Delete this user!" onclick="confirm('Are you sure you want to delete this user. This is not reversible?') ? this.parentElement.submit() : ''">
-                                          <i class="material-icons">delete_forever</i> DELETE <div class="ripple-container"></div>
-                                      </button>
-                                  </form>
+                                <form action="{{ route('owners.destroy',$owner->id) }}" method="post"> 
+                                    @csrf 
+                                    {{ method_field('DELETE') }}
+                                    <button type="button" class="btn btn-rose btn-round btn-block" title="Delete this user!" onclick="confirm('Are you sure you want to delete this user. This is not reversible?') ? this.parentElement.submit() : ''">
+                                        <i class="material-icons">delete_forever</i> DELETE <div class="ripple-container"></div>
+                                    </button>
+                                </form>
                             </div>
                             @endrole
                             @role(['super-admin','admin','officer'])
@@ -154,6 +154,14 @@
 
                                             <form action="{{ route('crimes.store') }}" method="POST">
                                                 @csrf
+                                                @foreach ($errors->all() as $error)
+                                                    <p class="alert alert-danger">{{ $error }}</p>
+                                                @endforeach
+                                                @if (session('success'))
+                                                    <div class="alert alert-success">
+                                                        {{ session('success') }}
+                                                    </div>
+                                                @endif
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Give Road Fine | {{ $owner->owner_name }}</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -162,7 +170,6 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="col-md-12">
-
                                                         <div class="form-group">
                                                             <label class="floating">Category</label>
                                                             <select name="category" class="selectpicker col-sm-12 pl-0 pr-0">
@@ -178,7 +185,7 @@
                                                             <label class="floating">Vehicle (MTP)</label>
                                                             <select name="car_id" class="selectpicker col-sm-12 pl-0 pr-0">
                                                                 <option value="Others">Select Vehicle</option>
-                                                                @foreach($vehicles as $vehicle)
+                                                                @foreach($owner->cars as $vehicle)
                                                                     <option value="{{ $vehicle->id }}">{{ $vehicle->no_plate . ' - ' . $vehicle->car_model . '('. $vehicle->date_of_expiry .')'  }}</option>
                                                                 @endforeach
                                                             </select>
@@ -189,17 +196,17 @@
                                                             <input type="number" name="fine_amount" class="form-control" placeholder="Amount in UGX">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="floating">Description</label>
+                                                            <label class="floating">Crime Description</label>
                                                             <textarea name="description" class="form-control" placeholder="The crime details and reference..."></textarea>
-
                                                         </div>
-                                                        <input type="hidden" name="officer_id" value="{{ Auth::user()->id }}">
+                                                        {{-- <input type="hidden" name="officer_id" value="{{ Auth::user()->id }}"> --}}
+
                                                         <input type="hidden" name="car_owner_id" value="{{ $owner->id }}">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="submit" class="btn btn-primary">Make FIne</button>
                                                 </div>
                                             </form>
 
@@ -217,7 +224,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-success card-header-icon">
-                <h4 class="card-title"> Crimes by {{ $owner->owner_name }} | {{ config('app.name') }} </h4>
+                <h4 class="card-title"> Crimes by {{ $owner->owner_name }} | <b class="text-danger">{{ $owner->crimes->count() }} Crimes ({{ sizeof($crimes) }})</b></h4>
             </div>
             <div class="card-body background-transparent">
                 <div class="table-responsive">
@@ -229,8 +236,8 @@
                                 <th>MTP</th>
                                 <th>Amount</th>
                                 <th>Added By</th>
-                                <th class="text-right">Status</th>
-                                <th class="text-right">Actions</th>
+                                <th class="text-center">Status</th>
+                                @role(['super-admin','admin'])<th class="text-right">Actions</th>@endrole
                             </tr>
                         </thead>
                         <tbody>
@@ -239,17 +246,25 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $crime->created_at }}</td>
-                                    <td><a @if ($crime->car_id) href="{{ route('vehicles.show',$crome->car_id) }}" @else href="javascript:void(0)" @endif>{{ $crome->car_id ? App\Models\Car::where('id',$crome->car_id)->first()->no_plate : 'MPT Profile Missing' }}</a></td>
+                                    <td><a @if ($crime->car_id) href="{{ route('vehicles.show',$crime->car_id) }}" @else href="javascript:void(0)" @endif>{{ $crime->car_id ? App\Models\Car::where('id',$crime->car_id)->first()->no_plate : 'MPT Profile Missing' }}</a></td>
                                     <td>{{ $crime->fine_amount }}</td>
                                     <td>{{ $crime->user_id ? App\User::where('id',$crime->user_id)->first()->name : '' }}</td>
-                                    <td class="td-actions text-center">
+                                    <td>{{ $crime->status }}</td>
+                                    @role(['super-admin','admin'])<td class="td-actions text-center">
                                         <a href="{{ route('crimes.show', $crime->id) }}" rel="tooltip" class="btn btn-info btn-round btn-sm" style="margin: 2px;" title="View crime's details">
                                             <i class="material-icons">done</i> View
                                         </a>
                                         <a href="{{ route('crimes.edit', $crime->id) }}" rel="tooltip" class="btn btn-success btn-round btn-sm" style="margin: 2px;" title="Edit crime's details">
                                               <i class="material-icons">edit</i> Edit
                                         </a>
-                                    </td>
+                                        <form action="{{ route('crimes.destroy',$crime->id) }}" method="post"> 
+                                            @csrf 
+                                            {{ method_field('DELETE') }}
+                                            <button type="button" class="btn btn-danger btn-round btn-sm" title="Delete this user!" onclick="confirm('Are you sure you want to delete this crime record. This is not reversible?') ? this.parentElement.submit() : ''">
+                                                <i class="material-icons">delete_forever</i> DELETE <div class="ripple-container"></div>
+                                            </button>
+                                        </form>
+                                    </td>@endrole
                                 </tr>
 
                             @endforeach

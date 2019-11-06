@@ -69,7 +69,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function
 	Route::resource('/cars/owner/accounts', 'AccountController');
 	Route::resource('/cars/vehicles', 'CarController');
 	Route::resource('/cars/owners', 'CarOwnerController');
-	Route::resource('/cars/owner/crimes', 'CarOwnerController');
+	Route::resource('/cars/owner/crimes', 'CrimeController');
 
 
 	Route::get('/user/profile/settings', [

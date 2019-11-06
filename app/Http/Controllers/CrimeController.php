@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
+use App\Models\Car;
 use App\Models\Crime;
 use Illuminate\Http\Request;
 
@@ -35,7 +37,26 @@ class CrimeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'user_id'       =>  'required',
+            'fine_amount'   => 'required',
+            'car_owner_id'  => 'required',
+            'car_id'        => 'required'
+        ]);
+        
+        
+        // $vehicle = Car::find($request->car_id);
+        $account = Account::where('car_id',$request->car_id)->first();
+        if (!$account) {
+            return back()->with('danger','This MTP does not have an account created!');
+        }
+        $account->balance -= $request->fine_amount;
+        $account->debt += $request->fine_amount;
+        $account->save();
+
+        Crime::create($request->all());
+
+        return back()->with('success','Crime record operated successfully!');
     }
 
     /**
@@ -78,8 +99,10 @@ class CrimeController extends Controller
      * @param  \App\Models\Crime  $crime
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Crime $crime)
+    public function destroy($id)
     {
-        //
+        $item = Crime::find($id);
+        $item->delete();
+        return back()->with('danger', 'Crime record deleted successfully!');
     }
 }
